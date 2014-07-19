@@ -17,3 +17,6 @@ C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\bin\Debug\mercasmartWPF.exe.co
 C:\mercasmart\sources\gitMercasmart\mercasmartWPF\bin\Debug\mercasmartWPF.exe.config
 C:\mercasmart\sources\gitMercasmart\mercasmartWPF\obj\x86\Debug\mercasmartWPF.exe
 C:\mercasmart\sources\gitMercasmart\mercasmartWPF\obj\x86\Debug\mercasmartWPF.pdb
+C:\mercasmart\sources\mercasmartWPF\bin\Debug\mercasmartWPF.exe.config
+C:\mercasmart\sources\mercasmartWPF\obj\x86\Debug\mercasmartWPF.exe
+C:\mercasmart\sources\mercasmartWPF\obj\x86\Debug\mercasmartWPF.pdb

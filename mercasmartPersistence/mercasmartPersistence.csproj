@@ -43,19 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\mercasmartEntities.cs" />
-    <Compile Include="EntityFramework\Model1.Designer.cs">
+    <Compile Include="EntityFramework\mercasmart.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>mercasmart.edmx</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Services\ProductosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="EntityFramework\Model1.edmx">
+    <EntityDeploy Include="EntityFramework\mercasmart.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>mercasmart.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>

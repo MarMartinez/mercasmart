@@ -23,6 +23,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("mercasmartModel", "FK_Productos_Marcas", "Marcas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(mercasmartPersistence.EntityFramework.Marcas), "Productos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(mercasmartPersistence.EntityFramework.Productos), true)]
 [assembly: EdmRelationshipAttribute("mercasmartModel", "FK_Productos_TiposProducto", "TiposProducto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(mercasmartPersistence.EntityFramework.TiposProducto), "Productos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(mercasmartPersistence.EntityFramework.Productos), true)]
 [assembly: EdmRelationshipAttribute("mercasmartModel", "FK_RelacionProductoEstablecimiento_Productos", "Productos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(mercasmartPersistence.EntityFramework.Productos), "RelacionProductoEstablecimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(mercasmartPersistence.EntityFramework.RelacionProductoEstablecimiento), true)]
+[assembly: EdmRelationshipAttribute("mercasmartModel", "RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(mercasmartPersistence.EntityFramework.RelacionProductoEstablecimiento), "RelacionProductoEstablecimientoPrecioVigencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(mercasmartPersistence.EntityFramework.RelacionProductoEstablecimientoPrecioVigencia), true)]
 
 #endregion
 
@@ -141,6 +142,22 @@ namespace mercasmartPersistence.EntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<RelacionProductoEstablecimientoPrecioVigencia> RelacionProductoEstablecimientoPrecioVigencia
+        {
+            get
+            {
+                if ((_RelacionProductoEstablecimientoPrecioVigencia == null))
+                {
+                    _RelacionProductoEstablecimientoPrecioVigencia = base.CreateObjectSet<RelacionProductoEstablecimientoPrecioVigencia>("RelacionProductoEstablecimientoPrecioVigencia");
+                }
+                return _RelacionProductoEstablecimientoPrecioVigencia;
+            }
+        }
+        private ObjectSet<RelacionProductoEstablecimientoPrecioVigencia> _RelacionProductoEstablecimientoPrecioVigencia;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<sysdiagrams> sysdiagrams
         {
             get
@@ -204,6 +221,14 @@ namespace mercasmartPersistence.EntityFramework
         public void AddToRelacionProductoEstablecimiento(RelacionProductoEstablecimiento relacionProductoEstablecimiento)
         {
             base.AddObject("RelacionProductoEstablecimiento", relacionProductoEstablecimiento);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the RelacionProductoEstablecimientoPrecioVigencia EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRelacionProductoEstablecimientoPrecioVigencia(RelacionProductoEstablecimientoPrecioVigencia relacionProductoEstablecimientoPrecioVigencia)
+        {
+            base.AddObject("RelacionProductoEstablecimientoPrecioVigencia", relacionProductoEstablecimientoPrecioVigencia);
         }
     
         /// <summary>
@@ -490,12 +515,14 @@ namespace mercasmartPersistence.EntityFramework
         /// <param name="idProducto">Initial value of the idProducto property.</param>
         /// <param name="codigoTipoProducto">Initial value of the codigoTipoProducto property.</param>
         /// <param name="codigoMarca">Initial value of the codigoMarca property.</param>
-        public static Productos CreateProductos(global::System.Int32 idProducto, global::System.String codigoTipoProducto, global::System.String codigoMarca)
+        /// <param name="nombre">Initial value of the nombre property.</param>
+        public static Productos CreateProductos(global::System.Int32 idProducto, global::System.String codigoTipoProducto, global::System.String codigoMarca, global::System.String nombre)
         {
             Productos productos = new Productos();
             productos.idProducto = idProducto;
             productos.codigoTipoProducto = codigoTipoProducto;
             productos.codigoMarca = codigoMarca;
+            productos.nombre = nombre;
             return productos;
         }
 
@@ -577,6 +604,30 @@ namespace mercasmartPersistence.EntityFramework
         private global::System.String _codigoMarca;
         partial void OncodigoMarcaChanging(global::System.String value);
         partial void OncodigoMarcaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
 
         #endregion
 
@@ -866,6 +917,214 @@ namespace mercasmartPersistence.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Productos>("mercasmartModel.FK_RelacionProductoEstablecimiento_Productos", "Productos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mercasmartModel", "RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimientoPrecioVigencia")]
+        public EntityCollection<RelacionProductoEstablecimientoPrecioVigencia> RelacionProductoEstablecimientoPrecioVigencia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<RelacionProductoEstablecimientoPrecioVigencia>("mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimientoPrecioVigencia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RelacionProductoEstablecimientoPrecioVigencia>("mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimientoPrecioVigencia", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="mercasmartModel", Name="RelacionProductoEstablecimientoPrecioVigencia")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class RelacionProductoEstablecimientoPrecioVigencia : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new RelacionProductoEstablecimientoPrecioVigencia object.
+        /// </summary>
+        /// <param name="idRelacionProductoEstablecimiento">Initial value of the idRelacionProductoEstablecimiento property.</param>
+        /// <param name="precio">Initial value of the precio property.</param>
+        /// <param name="desde">Initial value of the desde property.</param>
+        /// <param name="hasta">Initial value of the hasta property.</param>
+        public static RelacionProductoEstablecimientoPrecioVigencia CreateRelacionProductoEstablecimientoPrecioVigencia(global::System.Int32 idRelacionProductoEstablecimiento, global::System.Decimal precio, global::System.DateTime desde, global::System.DateTime hasta)
+        {
+            RelacionProductoEstablecimientoPrecioVigencia relacionProductoEstablecimientoPrecioVigencia = new RelacionProductoEstablecimientoPrecioVigencia();
+            relacionProductoEstablecimientoPrecioVigencia.idRelacionProductoEstablecimiento = idRelacionProductoEstablecimiento;
+            relacionProductoEstablecimientoPrecioVigencia.precio = precio;
+            relacionProductoEstablecimientoPrecioVigencia.desde = desde;
+            relacionProductoEstablecimientoPrecioVigencia.hasta = hasta;
+            return relacionProductoEstablecimientoPrecioVigencia;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idRelacionProductoEstablecimiento
+        {
+            get
+            {
+                return _idRelacionProductoEstablecimiento;
+            }
+            set
+            {
+                if (_idRelacionProductoEstablecimiento != value)
+                {
+                    OnidRelacionProductoEstablecimientoChanging(value);
+                    ReportPropertyChanging("idRelacionProductoEstablecimiento");
+                    _idRelacionProductoEstablecimiento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idRelacionProductoEstablecimiento");
+                    OnidRelacionProductoEstablecimientoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idRelacionProductoEstablecimiento;
+        partial void OnidRelacionProductoEstablecimientoChanging(global::System.Int32 value);
+        partial void OnidRelacionProductoEstablecimientoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal precio
+        {
+            get
+            {
+                return _precio;
+            }
+            set
+            {
+                if (_precio != value)
+                {
+                    OnprecioChanging(value);
+                    ReportPropertyChanging("precio");
+                    _precio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("precio");
+                    OnprecioChanged();
+                }
+            }
+        }
+        private global::System.Decimal _precio;
+        partial void OnprecioChanging(global::System.Decimal value);
+        partial void OnprecioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime desde
+        {
+            get
+            {
+                return _desde;
+            }
+            set
+            {
+                if (_desde != value)
+                {
+                    OndesdeChanging(value);
+                    ReportPropertyChanging("desde");
+                    _desde = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("desde");
+                    OndesdeChanged();
+                }
+            }
+        }
+        private global::System.DateTime _desde;
+        partial void OndesdeChanging(global::System.DateTime value);
+        partial void OndesdeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime hasta
+        {
+            get
+            {
+                return _hasta;
+            }
+            set
+            {
+                if (_hasta != value)
+                {
+                    OnhastaChanging(value);
+                    ReportPropertyChanging("hasta");
+                    _hasta = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("hasta");
+                    OnhastaChanged();
+                }
+            }
+        }
+        private global::System.DateTime _hasta;
+        partial void OnhastaChanging(global::System.DateTime value);
+        partial void OnhastaChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mercasmartModel", "RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimiento")]
+        public RelacionProductoEstablecimiento RelacionProductoEstablecimiento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RelacionProductoEstablecimiento>("mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimiento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RelacionProductoEstablecimiento>("mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimiento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<RelacionProductoEstablecimiento> RelacionProductoEstablecimientoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RelacionProductoEstablecimiento>("mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimiento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RelacionProductoEstablecimiento>("mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk", "RelacionProductoEstablecimiento", value);
                 }
             }
         }

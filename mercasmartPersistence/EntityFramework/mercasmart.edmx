@@ -4,29 +4,41 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db5aa7332fc69f49c28193a362013d503aModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="db5aa7332fc69f49c28193a362013d503aModelStoreContainer">
-          <EntitySet Name="Establecimientos" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.Establecimientos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Marcas" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.Marcas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Productos" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RelacionProductoEstablecimiento" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.RelacionProductoEstablecimiento" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TiposProducto" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.TiposProducto" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Productos_Marcas" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_Productos_Marcas">
+      <Schema Namespace="mercasmartModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="mercasmartModelStoreContainer">
+          <EntitySet Name="Establecimientos" EntityType="mercasmartModel.Store.Establecimientos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Marcas" EntityType="mercasmartModel.Store.Marcas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Productos" EntityType="mercasmartModel.Store.Productos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RelacionProductoEstablecimiento" EntityType="mercasmartModel.Store.RelacionProductoEstablecimiento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RelacionProductoEstablecimientoPrecioVigencia" EntityType="mercasmartModel.Store.RelacionProductoEstablecimientoPrecioVigencia" store:Type="Tables" store:Schema="dbo" store:Name="RelacionProductoEstablecimientoPrecioVigencia">
+            <DefiningQuery>SELECT 
+      [RelacionProductoEstablecimientoPrecioVigencia].[idRelacionProductoEstablecimiento] AS [idRelacionProductoEstablecimiento], 
+      [RelacionProductoEstablecimientoPrecioVigencia].[precio] AS [precio], 
+      [RelacionProductoEstablecimientoPrecioVigencia].[desde] AS [desde], 
+      [RelacionProductoEstablecimientoPrecioVigencia].[hasta] AS [hasta]
+      FROM [dbo].[RelacionProductoEstablecimientoPrecioVigencia] AS [RelacionProductoEstablecimientoPrecioVigencia]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="mercasmartModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TiposProducto" EntityType="mercasmartModel.Store.TiposProducto" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Productos_Marcas" Association="mercasmartModel.Store.FK_Productos_Marcas">
             <End Role="Marcas" EntitySet="Marcas" />
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Productos_TiposProducto" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_Productos_TiposProducto">
+          <AssociationSet Name="FK_Productos_TiposProducto" Association="mercasmartModel.Store.FK_Productos_TiposProducto">
             <End Role="TiposProducto" EntitySet="TiposProducto" />
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
-          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Establecimientos" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_RelacionProductoEstablecimiento_Establecimientos">
+          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Establecimientos" Association="mercasmartModel.Store.FK_RelacionProductoEstablecimiento_Establecimientos">
             <End Role="Establecimientos" EntitySet="Establecimientos" />
             <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Productos" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_RelacionProductoEstablecimiento_Productos">
+          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Productos" Association="mercasmartModel.Store.FK_RelacionProductoEstablecimiento_Productos">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+          </AssociationSet>
+          <AssociationSet Name="RelacionProductoEstablecimientoPrecioVigencia_fk" Association="mercasmartModel.Store.RelacionProductoEstablecimientoPrecioVigencia_fk">
+            <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+            <End Role="RelacionProductoEstablecimientoPrecioVigencia" EntitySet="RelacionProductoEstablecimientoPrecioVigencia" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Establecimientos">
@@ -51,6 +63,7 @@
           <Property Name="idProducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="codigoTipoProducto" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="codigoMarca" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="RelacionProductoEstablecimiento">
           <Key>
@@ -59,6 +72,21 @@
           <Property Name="idRelacion" Type="int" Nullable="false" />
           <Property Name="idProducto" Type="int" Nullable="false" />
           <Property Name="codigoEstablecimiento" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'db5aa7332fc69f49c28193a362013d503a.dbo.RelacionProductoEstablecimientoPrecioVigencia' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="RelacionProductoEstablecimientoPrecioVigencia">
+          <Key>
+            <PropertyRef Name="idRelacionProductoEstablecimiento" />
+            <PropertyRef Name="precio" />
+            <PropertyRef Name="desde" />
+            <PropertyRef Name="hasta" />
+          </Key>
+          <Property Name="idRelacionProductoEstablecimiento" Type="int" Nullable="false" />
+          <Property Name="precio" Type="money" Nullable="false" />
+          <Property Name="desde" Type="datetime" Nullable="false" />
+          <Property Name="hasta" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -78,8 +106,8 @@
           <Property Name="descripcionProducto" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Productos_Marcas">
-          <End Role="Marcas" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Marcas" Multiplicity="1" />
-          <End Role="Productos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" Multiplicity="*" />
+          <End Role="Marcas" Type="mercasmartModel.Store.Marcas" Multiplicity="1" />
+          <End Role="Productos" Type="mercasmartModel.Store.Productos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Marcas">
               <PropertyRef Name="codigoMarca" />
@@ -90,8 +118,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Productos_TiposProducto">
-          <End Role="TiposProducto" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.TiposProducto" Multiplicity="1" />
-          <End Role="Productos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" Multiplicity="*" />
+          <End Role="TiposProducto" Type="mercasmartModel.Store.TiposProducto" Multiplicity="1" />
+          <End Role="Productos" Type="mercasmartModel.Store.Productos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposProducto">
               <PropertyRef Name="codigoTipoProducto" />
@@ -102,8 +130,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RelacionProductoEstablecimiento_Establecimientos">
-          <End Role="Establecimientos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Establecimientos" Multiplicity="1" />
-          <End Role="RelacionProductoEstablecimiento" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.RelacionProductoEstablecimiento" Multiplicity="*" />
+          <End Role="Establecimientos" Type="mercasmartModel.Store.Establecimientos" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimiento" Type="mercasmartModel.Store.RelacionProductoEstablecimiento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Establecimientos">
               <PropertyRef Name="codigoEstablecimiento" />
@@ -114,14 +142,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RelacionProductoEstablecimiento_Productos">
-          <End Role="Productos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" Multiplicity="1" />
-          <End Role="RelacionProductoEstablecimiento" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.RelacionProductoEstablecimiento" Multiplicity="*" />
+          <End Role="Productos" Type="mercasmartModel.Store.Productos" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimiento" Type="mercasmartModel.Store.RelacionProductoEstablecimiento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Productos">
               <PropertyRef Name="idProducto" />
             </Principal>
             <Dependent Role="RelacionProductoEstablecimiento">
               <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelacionProductoEstablecimientoPrecioVigencia_fk">
+          <End Role="RelacionProductoEstablecimiento" Type="mercasmartModel.Store.RelacionProductoEstablecimiento" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimientoPrecioVigencia" Type="mercasmartModel.Store.RelacionProductoEstablecimientoPrecioVigencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelacionProductoEstablecimiento">
+              <PropertyRef Name="idRelacion" />
+            </Principal>
+            <Dependent Role="RelacionProductoEstablecimientoPrecioVigencia">
+              <PropertyRef Name="idRelacionProductoEstablecimiento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -135,6 +175,7 @@
           <EntitySet Name="Marcas" EntityType="mercasmartModel.Marcas" />
           <EntitySet Name="Productos" EntityType="mercasmartModel.Productos" />
           <EntitySet Name="RelacionProductoEstablecimiento" EntityType="mercasmartModel.RelacionProductoEstablecimiento" />
+          <EntitySet Name="RelacionProductoEstablecimientoPrecioVigencia" EntityType="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia" />
           <EntitySet Name="sysdiagrams" EntityType="mercasmartModel.sysdiagrams" />
           <EntitySet Name="TiposProducto" EntityType="mercasmartModel.TiposProducto" />
           <AssociationSet Name="FK_RelacionProductoEstablecimiento_Establecimientos" Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos">
@@ -152,6 +193,10 @@
           <AssociationSet Name="FK_RelacionProductoEstablecimiento_Productos" Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+          </AssociationSet>
+          <AssociationSet Name="RelacionProductoEstablecimientoPrecioVigencia_fk" Association="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk">
+            <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+            <End Role="RelacionProductoEstablecimientoPrecioVigencia" EntitySet="RelacionProductoEstablecimientoPrecioVigencia" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Establecimientos">
@@ -178,6 +223,7 @@
           <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codigoTipoProducto" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="codigoMarca" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Marcas" Relationship="mercasmartModel.FK_Productos_Marcas" FromRole="Productos" ToRole="Marcas" />
           <NavigationProperty Name="TiposProducto" Relationship="mercasmartModel.FK_Productos_TiposProducto" FromRole="Productos" ToRole="TiposProducto" />
           <NavigationProperty Name="RelacionProductoEstablecimiento" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos" FromRole="Productos" ToRole="RelacionProductoEstablecimiento" />
@@ -191,6 +237,20 @@
           <Property Name="codigoEstablecimiento" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Establecimientos" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos" FromRole="RelacionProductoEstablecimiento" ToRole="Establecimientos" />
           <NavigationProperty Name="Productos" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos" FromRole="RelacionProductoEstablecimiento" ToRole="Productos" />
+          <NavigationProperty Name="RelacionProductoEstablecimientoPrecioVigencia" Relationship="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk" FromRole="RelacionProductoEstablecimiento" ToRole="RelacionProductoEstablecimientoPrecioVigencia" />
+        </EntityType>
+        <EntityType Name="RelacionProductoEstablecimientoPrecioVigencia">
+          <Key>
+            <PropertyRef Name="idRelacionProductoEstablecimiento" />
+            <PropertyRef Name="precio" />
+            <PropertyRef Name="desde" />
+            <PropertyRef Name="hasta" />
+          </Key>
+          <Property Name="idRelacionProductoEstablecimiento" Type="Int32" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="desde" Type="DateTime" Nullable="false" />
+          <Property Name="hasta" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="RelacionProductoEstablecimiento" Relationship="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk" FromRole="RelacionProductoEstablecimientoPrecioVigencia" ToRole="RelacionProductoEstablecimiento" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -258,12 +318,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RelacionProductoEstablecimientoPrecioVigencia_fk">
+          <End Role="RelacionProductoEstablecimiento" Type="mercasmartModel.RelacionProductoEstablecimiento" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimientoPrecioVigencia" Type="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelacionProductoEstablecimiento">
+              <PropertyRef Name="idRelacion" />
+            </Principal>
+            <Dependent Role="RelacionProductoEstablecimientoPrecioVigencia">
+              <PropertyRef Name="idRelacionProductoEstablecimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db5aa7332fc69f49c28193a362013d503aModelStoreContainer" CdmEntityContainer="mercasmartEntities">
+        <EntityContainerMapping StorageEntityContainer="mercasmartModelStoreContainer" CdmEntityContainer="mercasmartEntities">
           <EntitySetMapping Name="Establecimientos">
             <EntityTypeMapping TypeName="mercasmartModel.Establecimientos">
               <MappingFragment StoreEntitySet="Establecimientos">
@@ -287,6 +359,7 @@
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="codigoTipoProducto" ColumnName="codigoTipoProducto" />
                 <ScalarProperty Name="codigoMarca" ColumnName="codigoMarca" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -296,6 +369,16 @@
                 <ScalarProperty Name="idRelacion" ColumnName="idRelacion" />
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="codigoEstablecimiento" ColumnName="codigoEstablecimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelacionProductoEstablecimientoPrecioVigencia">
+            <EntityTypeMapping TypeName="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia">
+              <MappingFragment StoreEntitySet="RelacionProductoEstablecimientoPrecioVigencia">
+                <ScalarProperty Name="idRelacionProductoEstablecimiento" ColumnName="idRelacionProductoEstablecimiento" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="desde" ColumnName="desde" />
+                <ScalarProperty Name="hasta" ColumnName="hasta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -338,33 +421,38 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model1">
-        <EntityTypeShape EntityType="mercasmartModel.Establecimientos" Width="1.5" PointX="3" PointY="5.25" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="mercasmartModel.Marcas" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="mercasmartModel.Productos" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="mercasmartModel.RelacionProductoEstablecimiento" Width="1.5" PointX="5.25" PointY="1" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="mercasmartModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="mercasmartModel.TiposProducto" Width="1.5" PointX="0.75" PointY="5.25" Height="1.5956835937499996" IsExpanded="true" />
+      <Diagram Name="mercasmart">
+        <EntityTypeShape EntityType="mercasmartModel.Establecimientos" Width="1.5" PointX="3" PointY="4.25" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.Marcas" Width="1.5" PointX="0.75" PointY="1.125" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.Productos" Width="1.5" PointX="3" PointY="0.875" Height="2.0853483072916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.RelacionProductoEstablecimiento" Width="1.5" PointX="5.25" PointY="1" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia" Width="1.5" PointX="7.5" PointY="1.125" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.75" Height="1.7566536458333322" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.TiposProducto" Width="1.5" PointX="0.75" PointY="4.25" Height="1.4279589843749996" IsExpanded="true" />
         <AssociationConnector Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.8192350260416656" />
-          <ConnectorPoint PointX="5.46875" PointY="6.8192350260416656" />
-          <ConnectorPoint PointX="5.46875" PointY="2.9802864583333335" />
+          <ConnectorPoint PointX="4.5" PointY="5.6235563151041656" />
+          <ConnectorPoint PointX="5.46875" PointY="5.6235563151041656" />
+          <ConnectorPoint PointX="5.46875" PointY="2.9210009765624996" />
         </AssociationConnector>
         <AssociationConnector Association="mercasmartModel.FK_Productos_Marcas" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.0189925130208337" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="2.0189925130208333" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="2.0189925130208337" />
-          <ConnectorPoint PointX="3" PointY="2.0189925130208337" />
+          <ConnectorPoint PointX="2.25" PointY="1.9211531575520837" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="1.9211531575520831" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="1.9211531575520837" />
+          <ConnectorPoint PointX="3" PointY="1.9211531575520837" />
         </AssociationConnector>
         <AssociationConnector Association="mercasmartModel.FK_Productos_TiposProducto" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="5.25" />
-          <ConnectorPoint PointX="2.625" PointY="4.875" />
-          <ConnectorPoint PointX="2.625" PointY="1.4157442565104161" />
-          <ConnectorPoint PointX="3" PointY="1.4157442565104161" />
+          <ConnectorPoint PointX="2.25" PointY="4.25" />
+          <ConnectorPoint PointX="2.625" PointY="3.875" />
+          <ConnectorPoint PointX="2.625" PointY="1.3668245787760411" />
+          <ConnectorPoint PointX="3" PointY="1.3668245787760411" />
         </AssociationConnector>
         <AssociationConnector Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="1.9901432291666668" />
-          <ConnectorPoint PointX="5.25" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="4.5" PointY="1.9605004882812498" />
+          <ConnectorPoint PointX="5.25" PointY="1.9605004882812498" />
+        </AssociationConnector>
+        <AssociationConnector Association="mercasmartModel.RelacionProductoEstablecimientoPrecioVigencia_fk" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="2.0033268229166667" />
+          <ConnectorPoint PointX="7.5" PointY="2.0033268229166667" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

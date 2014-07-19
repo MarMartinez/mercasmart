@@ -2,3 +2,4 @@ C:\mercasmart\sources\mercasmartWPF\mercasmartPersistence\bin\Debug\mercasmartPe
 C:\mercasmart\sources\mercasmartWPF\mercasmartPersistence\bin\Debug\mercasmartPersistence.pdb
 C:\mercasmart\sources\mercasmartWPF\mercasmartPersistence\obj\Debug\mercasmartPersistence.dll
 C:\mercasmart\sources\mercasmartWPF\mercasmartPersistence\obj\Debug\mercasmartPersistence.pdb
+C:\mercasmart\sources\mercasmartPersistence\obj\Debug\mercasmartPersistence.pdb
