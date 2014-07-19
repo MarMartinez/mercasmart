@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using mercasmartPersistence.EntityFramework;
 
-namespace mercasmartPersistence.EntityFramework.Services
+namespace mercasmartPersistence.Services
 {
     class ProductosService
     {

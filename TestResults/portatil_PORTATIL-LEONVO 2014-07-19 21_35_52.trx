@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="2a43dff1-0355-47d3-a0e2-614867646ed6" name="portatil@PORTATIL-LEONVO 2014-07-19 21:35:52" runUser="portatil-leonvo\portatil" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="19242419-107a-41e0-8b47-50e426bee6ea">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="portatil_PORTATIL-LEONVO 2014-07-19 21_35_52">
+      <DeploymentItem filename="C:\mercasmart\sources\mercasmartBusiness\bin\Debug\mercasmartBusiness.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-19T21:35:52.6156275+02:00" queuing="2014-07-19T21:35:56.1808314+02:00" start="2014-07-19T21:35:56.3248396+02:00" finish="2014-07-19T21:36:43.4475349+02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="2" executed="2" passed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="PORTATIL-LEONVO" outcome="Error" timestamp="2014-07-19T21:36:43.4455348+02:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ListarTodasLasMarcas" storage="c:\mercasmart\sources\mercasmarttest\bin\debug\mercasmarttest.dll" id="1d749800-6d9b-cc73-dee9-d20c4e0b9037">
+      <Execution id="0c45b327-ba11-4f8e-ac47-266be1170ffe" />
+      <TestMethod codeBase="C:/mercasmart/sources/mercasmartTest/bin/Debug/mercasmartTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="mercasmartTest.Business.MarcasTest, mercasmartTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ListarTodasLasMarcas" />
+    </UnitTest>
+    <UnitTest name="ListarTodosEstablecimientos" storage="c:\mercasmart\sources\mercasmarttest\bin\debug\mercasmarttest.dll" id="081fe8df-4c76-e372-c6c7-f0e0e05c3905">
+      <Execution id="4068c25a-ec14-4f04-987b-63ffbb3f237f" />
+      <TestMethod codeBase="C:/mercasmart/sources/mercasmartTest/bin/Debug/mercasmartTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="mercasmartTest.Business.EstablecimientosTest, mercasmartTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ListarTodosEstablecimientos" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="1d749800-6d9b-cc73-dee9-d20c4e0b9037" executionId="0c45b327-ba11-4f8e-ac47-266be1170ffe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="081fe8df-4c76-e372-c6c7-f0e0e05c3905" executionId="4068c25a-ec14-4f04-987b-63ffbb3f237f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0c45b327-ba11-4f8e-ac47-266be1170ffe" testId="1d749800-6d9b-cc73-dee9-d20c4e0b9037" testName="ListarTodasLasMarcas" computerName="PORTATIL-LEONVO" duration="00:00:00.0125720" startTime="2014-07-19T21:35:56.4368461+02:00" endTime="2014-07-19T21:35:58.0959409+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c45b327-ba11-4f8e-ac47-266be1170ffe">
+    </UnitTestResult>
+    <UnitTestResult executionId="4068c25a-ec14-4f04-987b-63ffbb3f237f" testId="081fe8df-4c76-e372-c6c7-f0e0e05c3905" testName="ListarTodosEstablecimientos" computerName="PORTATIL-LEONVO" duration="00:00:45.3335929" startTime="2014-07-19T21:35:58.1139420+02:00" endTime="2014-07-19T21:36:43.4475349+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4068c25a-ec14-4f04-987b-63ffbb3f237f">
+    </UnitTestResult>
+  </Results>
+</TestRun>

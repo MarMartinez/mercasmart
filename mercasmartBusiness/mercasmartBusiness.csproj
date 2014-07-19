@@ -43,6 +43,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\Establecimiento.cs" />
     <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Mapping\EstablecimientosMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />
   </ItemGroup>
