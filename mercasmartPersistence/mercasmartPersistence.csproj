@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Establecimiento.cs" />
     <Compile Include="EntityFramework\mercasmart.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

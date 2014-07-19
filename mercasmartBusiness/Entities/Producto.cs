@@ -17,7 +17,6 @@ namespace mercasmartBusiness
 
         public List<Producto> getListaTodosProductos()
         {
-            mercasmartEntities DB = new mercasmartEntities();
             List<Producto> listaTodosProductos = new List<Producto>();
 
             
