@@ -1,0 +1,4 @@
+C:\mercasmart\sources\mercasmartWPF\mercasmartBusiness\bin\Debug\mercasmartBusiness.dll
+C:\mercasmart\sources\mercasmartWPF\mercasmartBusiness\bin\Debug\mercasmartBusiness.pdb
+C:\mercasmart\sources\mercasmartWPF\mercasmartBusiness\obj\Debug\mercasmartBusiness.dll
+C:\mercasmart\sources\mercasmartWPF\mercasmartBusiness\obj\Debug\mercasmartBusiness.pdb

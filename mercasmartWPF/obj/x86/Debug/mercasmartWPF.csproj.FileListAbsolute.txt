@@ -1,0 +1,16 @@
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\bin\Debug\mercasmartWPF.exe
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\bin\Debug\mercasmartWPF.pdb
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\ListaCompraSupermercado.baml
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\ListadoProductos.baml
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\MainWindow.baml
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\ListaCompraSupermercado.g.cs
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\ListadoProductos.g.cs
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\MainWindow.g.cs
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\App.g.cs
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\mercasmartWPF_MarkupCompile.cache
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\mercasmartWPF.g.resources
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\mercasmartWPF.Properties.Resources.resources
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\mercasmartWPF.csproj.GenerateResource.Cache
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\mercasmartWPF.exe
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\obj\x86\Debug\mercasmartWPF.pdb
+C:\mercasmart\sources\mercasmartWPF\mercasmartWPF\bin\Debug\mercasmartWPF.exe.config

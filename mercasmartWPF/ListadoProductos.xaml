@@ -1,0 +1,10 @@
+﻿<Window x:Class="mercasmartWPF.ListadoProductos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ListadoProductos" Height="300" Width="723">
+    <Grid>
+        <Label Content="Introduce un producto:" Height="25" HorizontalAlignment="Left" Margin="86,0,0,0" Name="label1" VerticalAlignment="Top" Width="502" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="86,28,0,0" Name="txtProducto" VerticalAlignment="Top" Width="529" TextChanged="txtProducto_TextChanged" />
+        <DataGrid AutoGenerateColumns="False" Height="179" HorizontalAlignment="Left" Margin="21,60,0,0" Name="dgProductos" VerticalAlignment="Top" Width="656" />
+    </Grid>
+</Window>

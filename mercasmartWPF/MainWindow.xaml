@@ -1,0 +1,23 @@
+﻿<Window x:Class="mercasmartWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Página Principal" Height="350" Width="844">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="76*" />
+            <RowDefinition Height="235*" />
+        </Grid.RowDefinitions>
+        <Label Content="Bienvenido a MERCASMART. Haz que tu lista de la compra sea más económica. " Height="45" HorizontalAlignment="Left" Margin="12,48,0,0" Name="label1" VerticalAlignment="Top" Width="798" FontStretch="Expanded" FontWeight="Black" HorizontalContentAlignment="Center" Foreground="#FF07AA07" FontSize="20" Grid.RowSpan="2" />
+        <TextBlock Grid.Row="1" Height="64" HorizontalAlignment="Left" Margin="55,53,0,0" Name="txtBlockProducto" VerticalAlignment="Top" Width="327" TextAlignment="Center" FontSize="20" Foreground="#FFEB2121">
+            ¿Quieres saber qué supermercado <LineBreak/>
+            ofrece tu producto más barato?
+        </TextBlock>
+        <TextBlock FontSize="20" Foreground="#FFEB2121" Height="87" HorizontalAlignment="Left" Margin="426,40,0,0" Name="txtBlockSupermercado" TextAlignment="Center" VerticalAlignment="Top" Width="327" Grid.Row="1">
+            ¿Quieres saber cuánto vale <LineBreak />
+            tu lista de la compra  <LineBreak />
+            en tu supermercado?
+        </TextBlock>
+        <Button Content="Ahorra en producto" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="136,147,0,0" Name="btnObtenerProductos" VerticalAlignment="Top" Width="158" Click="btnObtenerProductos_Click" />
+        <Button Content="Calcula el precio" Height="23" HorizontalAlignment="Left" Margin="525,147,0,0" Name="btnListaProductosSupermercado" VerticalAlignment="Top" Width="158" Grid.Row="1" />
+    </Grid>
+</Window>

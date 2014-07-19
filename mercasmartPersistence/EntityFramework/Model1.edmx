@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db5aa7332fc69f49c28193a362013d503aModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="db5aa7332fc69f49c28193a362013d503aModelStoreContainer">
+          <EntitySet Name="Establecimientos" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.Establecimientos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Marcas" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.Marcas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Productos" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RelacionProductoEstablecimiento" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.RelacionProductoEstablecimiento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TiposProducto" EntityType="db5aa7332fc69f49c28193a362013d503aModel.Store.TiposProducto" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Productos_Marcas" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_Productos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposProducto" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_Productos_TiposProducto">
+            <End Role="TiposProducto" EntitySet="TiposProducto" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Establecimientos" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_RelacionProductoEstablecimiento_Establecimientos">
+            <End Role="Establecimientos" EntitySet="Establecimientos" />
+            <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Productos" Association="db5aa7332fc69f49c28193a362013d503aModel.Store.FK_RelacionProductoEstablecimiento_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Establecimientos">
+          <Key>
+            <PropertyRef Name="codigoEstablecimiento" />
+          </Key>
+          <Property Name="codigoEstablecimiento" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="nombreEstablecimiento" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="codigoMarca" />
+          </Key>
+          <Property Name="codigoMarca" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="nombreMarca" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="marcaBlanca" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigoTipoProducto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="codigoMarca" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RelacionProductoEstablecimiento">
+          <Key>
+            <PropertyRef Name="idRelacion" />
+          </Key>
+          <Property Name="idRelacion" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="codigoEstablecimiento" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TiposProducto">
+          <Key>
+            <PropertyRef Name="codigoTipoProducto" />
+          </Key>
+          <Property Name="codigoTipoProducto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="descripcionProducto" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Productos_Marcas">
+          <End Role="Marcas" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Marcas" Multiplicity="1" />
+          <End Role="Productos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="codigoMarca" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="codigoMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposProducto">
+          <End Role="TiposProducto" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.TiposProducto" Multiplicity="1" />
+          <End Role="Productos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProducto">
+              <PropertyRef Name="codigoTipoProducto" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="codigoTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelacionProductoEstablecimiento_Establecimientos">
+          <End Role="Establecimientos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Establecimientos" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimiento" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.RelacionProductoEstablecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Establecimientos">
+              <PropertyRef Name="codigoEstablecimiento" />
+            </Principal>
+            <Dependent Role="RelacionProductoEstablecimiento">
+              <PropertyRef Name="codigoEstablecimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelacionProductoEstablecimiento_Productos">
+          <End Role="Productos" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.Productos" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimiento" Type="db5aa7332fc69f49c28193a362013d503aModel.Store.RelacionProductoEstablecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="RelacionProductoEstablecimiento">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mercasmartModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="mercasmartEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Establecimientos" EntityType="mercasmartModel.Establecimientos" />
+          <EntitySet Name="Marcas" EntityType="mercasmartModel.Marcas" />
+          <EntitySet Name="Productos" EntityType="mercasmartModel.Productos" />
+          <EntitySet Name="RelacionProductoEstablecimiento" EntityType="mercasmartModel.RelacionProductoEstablecimiento" />
+          <EntitySet Name="sysdiagrams" EntityType="mercasmartModel.sysdiagrams" />
+          <EntitySet Name="TiposProducto" EntityType="mercasmartModel.TiposProducto" />
+          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Establecimientos" Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos">
+            <End Role="Establecimientos" EntitySet="Establecimientos" />
+            <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Marcas" Association="mercasmartModel.FK_Productos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposProducto" Association="mercasmartModel.FK_Productos_TiposProducto">
+            <End Role="TiposProducto" EntitySet="TiposProducto" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelacionProductoEstablecimiento_Productos" Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="RelacionProductoEstablecimiento" EntitySet="RelacionProductoEstablecimiento" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Establecimientos">
+          <Key>
+            <PropertyRef Name="codigoEstablecimiento" />
+          </Key>
+          <Property Name="codigoEstablecimiento" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="nombreEstablecimiento" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="RelacionProductoEstablecimiento" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos" FromRole="Establecimientos" ToRole="RelacionProductoEstablecimiento" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="codigoMarca" />
+          </Key>
+          <Property Name="codigoMarca" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="nombreMarca" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="marcaBlanca" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="mercasmartModel.FK_Productos_Marcas" FromRole="Marcas" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoTipoProducto" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="codigoMarca" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Marcas" Relationship="mercasmartModel.FK_Productos_Marcas" FromRole="Productos" ToRole="Marcas" />
+          <NavigationProperty Name="TiposProducto" Relationship="mercasmartModel.FK_Productos_TiposProducto" FromRole="Productos" ToRole="TiposProducto" />
+          <NavigationProperty Name="RelacionProductoEstablecimiento" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos" FromRole="Productos" ToRole="RelacionProductoEstablecimiento" />
+        </EntityType>
+        <EntityType Name="RelacionProductoEstablecimiento">
+          <Key>
+            <PropertyRef Name="idRelacion" />
+          </Key>
+          <Property Name="idRelacion" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="codigoEstablecimiento" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Establecimientos" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos" FromRole="RelacionProductoEstablecimiento" ToRole="Establecimientos" />
+          <NavigationProperty Name="Productos" Relationship="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos" FromRole="RelacionProductoEstablecimiento" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TiposProducto">
+          <Key>
+            <PropertyRef Name="codigoTipoProducto" />
+          </Key>
+          <Property Name="codigoTipoProducto" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="descripcionProducto" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Productos" Relationship="mercasmartModel.FK_Productos_TiposProducto" FromRole="TiposProducto" ToRole="Productos" />
+        </EntityType>
+        <Association Name="FK_RelacionProductoEstablecimiento_Establecimientos">
+          <End Role="Establecimientos" Type="mercasmartModel.Establecimientos" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimiento" Type="mercasmartModel.RelacionProductoEstablecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Establecimientos">
+              <PropertyRef Name="codigoEstablecimiento" />
+            </Principal>
+            <Dependent Role="RelacionProductoEstablecimiento">
+              <PropertyRef Name="codigoEstablecimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Marcas">
+          <End Role="Marcas" Type="mercasmartModel.Marcas" Multiplicity="1" />
+          <End Role="Productos" Type="mercasmartModel.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="codigoMarca" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="codigoMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposProducto">
+          <End Role="TiposProducto" Type="mercasmartModel.TiposProducto" Multiplicity="1" />
+          <End Role="Productos" Type="mercasmartModel.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProducto">
+              <PropertyRef Name="codigoTipoProducto" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="codigoTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelacionProductoEstablecimiento_Productos">
+          <End Role="Productos" Type="mercasmartModel.Productos" Multiplicity="1" />
+          <End Role="RelacionProductoEstablecimiento" Type="mercasmartModel.RelacionProductoEstablecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="RelacionProductoEstablecimiento">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db5aa7332fc69f49c28193a362013d503aModelStoreContainer" CdmEntityContainer="mercasmartEntities">
+          <EntitySetMapping Name="Establecimientos">
+            <EntityTypeMapping TypeName="mercasmartModel.Establecimientos">
+              <MappingFragment StoreEntitySet="Establecimientos">
+                <ScalarProperty Name="codigoEstablecimiento" ColumnName="codigoEstablecimiento" />
+                <ScalarProperty Name="nombreEstablecimiento" ColumnName="nombreEstablecimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="mercasmartModel.Marcas">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="codigoMarca" ColumnName="codigoMarca" />
+                <ScalarProperty Name="nombreMarca" ColumnName="nombreMarca" />
+                <ScalarProperty Name="marcaBlanca" ColumnName="marcaBlanca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="mercasmartModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="codigoTipoProducto" ColumnName="codigoTipoProducto" />
+                <ScalarProperty Name="codigoMarca" ColumnName="codigoMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelacionProductoEstablecimiento">
+            <EntityTypeMapping TypeName="mercasmartModel.RelacionProductoEstablecimiento">
+              <MappingFragment StoreEntitySet="RelacionProductoEstablecimiento">
+                <ScalarProperty Name="idRelacion" ColumnName="idRelacion" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="codigoEstablecimiento" ColumnName="codigoEstablecimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="mercasmartModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposProducto">
+            <EntityTypeMapping TypeName="mercasmartModel.TiposProducto">
+              <MappingFragment StoreEntitySet="TiposProducto">
+                <ScalarProperty Name="codigoTipoProducto" ColumnName="codigoTipoProducto" />
+                <ScalarProperty Name="descripcionProducto" ColumnName="descripcionProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="mercasmartModel.Establecimientos" Width="1.5" PointX="3" PointY="5.25" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.Marcas" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.Productos" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.RelacionProductoEstablecimiento" Width="1.5" PointX="5.25" PointY="1" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="mercasmartModel.TiposProducto" Width="1.5" PointX="0.75" PointY="5.25" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Establecimientos" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.8192350260416656" />
+          <ConnectorPoint PointX="5.46875" PointY="6.8192350260416656" />
+          <ConnectorPoint PointX="5.46875" PointY="2.9802864583333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="mercasmartModel.FK_Productos_Marcas" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.0189925130208337" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="2.0189925130208333" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="2.0189925130208337" />
+          <ConnectorPoint PointX="3" PointY="2.0189925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="mercasmartModel.FK_Productos_TiposProducto" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.25" />
+          <ConnectorPoint PointX="2.625" PointY="4.875" />
+          <ConnectorPoint PointX="2.625" PointY="1.4157442565104161" />
+          <ConnectorPoint PointX="3" PointY="1.4157442565104161" />
+        </AssociationConnector>
+        <AssociationConnector Association="mercasmartModel.FK_RelacionProductoEstablecimiento_Productos" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="5.25" PointY="1.9901432291666668" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
