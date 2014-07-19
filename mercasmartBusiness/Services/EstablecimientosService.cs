@@ -10,13 +10,17 @@ namespace mercasmartBusiness.Services
     public class EstablecimientosService
     {
 
+        private mercasmartPersistence.Services.EstablecimientosService m_persistenceService;
+        public EstablecimientosService()
+        {
+            m_persistenceService = new mercasmartPersistence.Services.EstablecimientosService();
+        }
+
         public List<Entities.Establecimiento> getEstablecimientosAll()
         {
             var establimientosModels = new List<Establecimiento>();
 
-            var persistenceService = new mercasmartPersistence.Services.EstablecimientosService();
-
-            establimientosModels = persistenceService.getProductosAll();
+            establimientosModels = m_persistenceService.getProductosAll();
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
@@ -25,5 +29,47 @@ namespace mercasmartBusiness.Services
             return establecimientosBusiness;
         }
 
+
+        public List<Entities.Establecimiento> getEstablecimientosByNombre(string nombre)
+        {
+            var establimientosModels = new List<Establecimiento>();
+
+            establimientosModels = m_persistenceService.getProductosByNombre(nombre);
+
+            List<Entities.Establecimiento> establecimientosBusiness;
+
+            Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+
+            return establecimientosBusiness;
+        }
+
+
+        public List<Entities.Establecimiento> getEstablecimientosByCodigo(string codigo)
+        {
+            var establimientosModels = new List<Establecimiento>();
+
+            establimientosModels = m_persistenceService.getProductosByCodigo(codigo);
+
+            List<Entities.Establecimiento> establecimientosBusiness;
+
+            Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+
+            return establecimientosBusiness;
+        }
+
+        public void modifyEstablecimientos(Entities.Establecimiento establecimiento)
+        {
+            Establecimiento establimientoModel;
+
+            Mapping.EstablecimientosMap.mapEntityToModel(establecimiento, out establimientoModel);
+
+            m_persistenceService.modifyEstablecimiento(establimientoModel);
+
+            //Entities.Establecimiento establecimientoBusiness;
+
+            //Mapping.EstablecimientosMap.mapModelToEntity(establimientoModel, out establecimientoBusiness);
+
+            //return establecimientosBusiness;
+        }
     }
 }

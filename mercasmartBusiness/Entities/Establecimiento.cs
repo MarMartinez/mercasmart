@@ -7,8 +7,7 @@ namespace mercasmartBusiness.Entities
 {
     public class Establecimiento
     {
-
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
-
     }
 }
