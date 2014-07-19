@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\mercasmart\sources\mercasmartWPF\obj\x86\Debug\
+C:\mercasmart\sources\gitMercasmart\mercasmartWPF\obj\x86\Debug\
 mercasmartWPF
 none
 false
 DEBUG;TRACE
-C:\mercasmart\sources\mercasmartWPF\App.xaml
+C:\mercasmart\sources\gitMercasmart\mercasmartWPF\App.xaml
 3199606279
 
-8-524024861
-16996871939
+8-516287321
+162095154570
 ListaCompraSupermercado.xaml;ListadoProductos.xaml;MainWindow.xaml;
 
 False
