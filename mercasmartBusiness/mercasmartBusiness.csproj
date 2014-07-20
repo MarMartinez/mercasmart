@@ -45,6 +45,7 @@
     <Compile Include="Mapping\EstablecimientosMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />
+    <Compile Include="Services\ProductoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mercasmartPersistence\mercasmartPersistence.csproj">

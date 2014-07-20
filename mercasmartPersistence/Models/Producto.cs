@@ -5,7 +5,7 @@ using System.Text;
 
 namespace mercasmartPersistence.Models
 {
-    class Producto
+    public class Producto
     {
     }
 }

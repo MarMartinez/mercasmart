@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>mercasmart.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Producto.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />
     <Compile Include="Services\ProductosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
