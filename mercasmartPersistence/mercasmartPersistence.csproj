@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\Mapping\MarcasMap.cs" />
+    <Compile Include="EntityFramework\Factories\Conexion.cs" />    
+	<Compile Include="EntityFramework\Mapping\MarcasMap.cs" />
     <Compile Include="EntityFramework\Mapping\EstablecimientosMap.cs" />
     <Compile Include="EntityFramework\Mapping\ProductosMap.cs" />
     <Compile Include="Models\Marca.cs" />
@@ -65,9 +66,7 @@
       <LastGenOutput>mercasmart.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
