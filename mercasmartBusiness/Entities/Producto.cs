@@ -9,11 +9,11 @@ namespace mercasmartBusiness.Entities
 {
     public class Producto
     {
-        private string nombre;
-        private string marca;
-        private string tipoProducto;
-        private double precio;
-        private string establecimiento;
+        public string nombre { get; set; }
+        public string marca { get; set; }
+        //public string tipoProducto { get; set; }
+        //public double precio { get; set; }
+        //public string establecimiento { get; set; }
         
     }
 }

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using mercasmartPersistence.Services;
 using mercasmartPersistence.Models;
+using mercasmartPersistence.Services;
 
 namespace mercasmartBusiness.Services
 {
-    class ProductoService
+    public class ProductoService
     {
         private mercasmartPersistence.Services.ProductosService m_persistenceService;
         public ProductoService()
@@ -18,16 +18,15 @@ namespace mercasmartBusiness.Services
 
         public List<Entities.Producto> getProductosAll()
         {
-            //var productosModel = new List<Producto>();
+            var productosModels = new List<Producto>();
 
-            //productosModel = m_persistenceService.getProductosAll();
+            productosModels = m_persistenceService.getProductosAll();
 
-            //List<Entities.Establecimiento> establecimientosBusiness;
+            List<Entities.Producto> productosBusiness;
 
-            //Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+            Mapping.ProductosMapping.mapModelToEntity(productosModels, out productosBusiness);
 
-            //return establecimientosBusiness;
-            return null;
+            return productosBusiness;
         }
     }
 }

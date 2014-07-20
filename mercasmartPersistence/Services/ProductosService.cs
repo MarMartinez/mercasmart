@@ -10,41 +10,33 @@ namespace mercasmartPersistence.Services
     {
         public List<Models.Producto> getProductosAll()
         {
-            //using (var db = new mercasmartEntities())
-            //{
-            //    var listadoProductos = getProductosAll(db).ToList();
-
-                
-            //    var establecimientos = getEstablecimientosAll(db).ToList();
-            //    List<Models.Establecimiento> modelEstablecimiento;
-            //    EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
-            //    return modelEstablecimiento;
-            //}
-            return null;
+            using (var db = new mercasmartEntities())
+            {
+                var listadoProductos = getProductosAll(db).ToList();
+                List<Models.Producto> modelProductos;
+                EntityFramework.Mapping.ProductosMap.mapEntityFrameworkToModel(listadoProductos, out modelProductos);
+                return modelProductos;
+            }
         }
 
         private IQueryable<Productos> getProductosAll(mercasmartEntities db)
         {
+            var productos = db.Productos;
+            return productos;
+
             //var productos = from prod in db.Productos
             //                join tipoProd in db.TiposProducto on prod.codigoTipoProducto equals tipoProd.codigoTipoProducto
-            //                join relEst in db.
-
-
-
-
-
-            //"select PR.nombre, MA.nombreMarca, TP.codigoTipoProducto, RELPRE.codigoEstablecimiento, RELPREV.precio"
-            //"from [Productos] as PR"
-            //left join [Marcas] as MA
-            //on PR.codigoMarca = MA.codigoMarca
-            //left join [TiposProducto] as TP
-            //on PR.codigoTipoProducto = TP.codigoTipoProducto
-            //left join [RelacionProductoEstablecimiento] as RELPRE
-            //on PR.idProducto = RELPRE.idProducto
-            //left join [RelacionProductoEstablecimientoPrecioVigencia] as RELPREV
-            //on RELPRE.idRelacion = RELPREV.idRelacionProductoEstablecimiento"
-            //return establecimientos;
-            return null;
+            //                join marca in db.Marcas on prod.codigoMarca equals marca.codigoMarca
+            //                join relEst in db.RelacionProductoEstablecimiento on prod.idProducto equals relEst.idProducto
+            //                join relEstPrecio in db.RelacionProductoEstablecimientoPrecioVigencia on relEst.idRelacion equals relEstPrecio.idRelacionProductoEstablecimiento
+            //                select new {
+            //                    nombre = prod.nombre,
+            //                    marca = marca.nombreMarca,
+            //                    tipoProducto = tipoProd.descripcionProducto,
+            //                    establecimiento = relEst.codigoEstablecimiento,
+            //                    precio = relEstPrecio.precio
+            //                };
+            //return (List<Models.Producto>)productos;
         }
 
     }
