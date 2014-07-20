@@ -29,6 +29,7 @@ namespace mercasmartBusiness.Services
             return establecimientosBusiness;
         }
 
+
         public List<Entities.Establecimiento> getEstablecimientosByNombre(string nombre)
         {
             var establimientosModels = new List<Establecimiento>();
@@ -41,6 +42,7 @@ namespace mercasmartBusiness.Services
 
             return establecimientosBusiness;
         }
+
 
         public List<Entities.Establecimiento> getEstablecimientosByCodigo(string codigo)
         {
@@ -62,13 +64,6 @@ namespace mercasmartBusiness.Services
             Mapping.EstablecimientosMap.mapEntityToModel(establecimiento, out establimientoModel);
 
             m_persistenceService.modifyEstablecimiento(establimientoModel);
-
-            //Entities.Establecimiento establecimientoBusiness;
-
-            //Mapping.EstablecimientosMap.mapModelToEntity(establimientoModel, out establecimientoBusiness);
-
-            //return establecimientosBusiness;
         }
-
     }
 }
