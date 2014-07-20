@@ -11,7 +11,7 @@ namespace mercasmartPersistence.Services
 
         public List<Models.Establecimiento> getEstablecimientosAll()
         {
-            using (var db = new mercasmartEntities())
+            using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
                 var establecimientos = getEstablecimientosAll(db).ToList();
                 List<Models.Establecimiento> modelEstablecimiento;
@@ -22,7 +22,7 @@ namespace mercasmartPersistence.Services
 
         public List<Models.Establecimiento> getEstablecimientosByNombre(string nombre)
         {
-            using (var db = new mercasmartEntities())
+            using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
                 var establecimientos = getEstablecimientosByNombre(db, nombre).ToList();
                 List<Models.Establecimiento> modelEstablecimiento;
@@ -33,7 +33,7 @@ namespace mercasmartPersistence.Services
 
         public List<Models.Establecimiento> getEstablecimientosByCodigo(string codigo)
         {
-            using (var db = new mercasmartEntities())
+            using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
                 var establecimientos = getEstablecimientosByCodigo(db, codigo).ToList();
                 List<Models.Establecimiento> modelEstablecimiento;
@@ -44,7 +44,7 @@ namespace mercasmartPersistence.Services
 
         public void modifyEstablecimiento(Models.Establecimiento establimientoModel)
         {
-            using (mercasmartEntities db = new mercasmartEntities())
+            using (mercasmartEntities db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
                 var establecimientoAModificar = getEstablecimientosByCodigo(db, establimientoModel.Codigo).FirstOrDefault();
                 EntityFramework.Mapping.EstablecimientosMap.mapModelToEntityFramework(establimientoModel, ref establecimientoAModificar);
