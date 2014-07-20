@@ -17,15 +17,16 @@ namespace mercasmartBusiness.Services
 
         public List<Entities.Producto> getProductosAll()
         {
-            var productosModel = new List<Producto>();
+            //var productosModel = new List<Producto>();
 
-            productosModel = m_persistenceService.getProductosAll();
+            //productosModel = m_persistenceService.getProductosAll();
 
-            List<Entities.Establecimiento> establecimientosBusiness;
+            //List<Entities.Establecimiento> establecimientosBusiness;
 
-            Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+            //Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
 
-            return establecimientosBusiness;
+            //return establecimientosBusiness;
+            return null;
         }
     }
 }
