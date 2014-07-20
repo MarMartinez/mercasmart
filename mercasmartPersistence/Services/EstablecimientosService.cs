@@ -9,33 +9,33 @@ namespace mercasmartPersistence.Services
     public class EstablecimientosService
     {
 
-        public List<Models.Establecimiento> getProductosAll()
+        public List<Models.Establecimiento> getEstablecimientosAll()
         {
             using (var db = new mercasmartEntities())
             {
-                var establecimientos = getProductosAll(db).ToList();
+                var establecimientos = getEstablecimientosAll(db).ToList();
                 List<Models.Establecimiento> modelEstablecimiento;
                 EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
                 return modelEstablecimiento;
             }
         }
 
-        public List<Models.Establecimiento> getProductosByNombre(string nombre)
+        public List<Models.Establecimiento> getEstablecimientosByNombre(string nombre)
         {
             using (var db = new mercasmartEntities())
             {
-                var establecimientos = getProductosByNombre(db, nombre).ToList();
+                var establecimientos = getEstablecimientosByNombre(db, nombre).ToList();
                 List<Models.Establecimiento> modelEstablecimiento;
                 EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
                 return modelEstablecimiento;
             }
         }
 
-        public List<Models.Establecimiento> getProductosByCodigo(string codigo)
+        public List<Models.Establecimiento> getEstablecimientosByCodigo(string codigo)
         {
             using (var db = new mercasmartEntities())
             {
-                var establecimientos = getProductosByCodigo(db, codigo).ToList();
+                var establecimientos = getEstablecimientosByCodigo(db, codigo).ToList();
                 List<Models.Establecimiento> modelEstablecimiento;
                 EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
                 return modelEstablecimiento;
@@ -46,25 +46,25 @@ namespace mercasmartPersistence.Services
         {
             using (mercasmartEntities db = new mercasmartEntities())
             {
-                var establecimientoAModificar = getProductosByCodigo(db, establimientoModel.Codigo).FirstOrDefault();
+                var establecimientoAModificar = getEstablecimientosByCodigo(db, establimientoModel.Codigo).FirstOrDefault();
                 EntityFramework.Mapping.EstablecimientosMap.mapModelToEntityFramework(establimientoModel, ref establecimientoAModificar);
                 db.SaveChanges();
             }
         }
 
-        private IQueryable<Establecimientos> getProductosByCodigo(mercasmartEntities db, string codigo)
+        private IQueryable<Establecimientos> getEstablecimientosByCodigo(mercasmartEntities db, string codigo)
         {
             var establecimientos = db.Establecimientos.Where(est => est.codigoEstablecimiento == codigo);
             return establecimientos;
         }
 
-        private IQueryable<Establecimientos> getProductosByNombre(mercasmartEntities db, string nombre)
+        private IQueryable<Establecimientos> getEstablecimientosByNombre(mercasmartEntities db, string nombre)
         {
             var establecimientos = db.Establecimientos.Where(est => est.nombreEstablecimiento == nombre);
             return establecimientos;
         }
 
-        private IQueryable<Establecimientos> getProductosAll(mercasmartEntities db)
+        private IQueryable<Establecimientos> getEstablecimientosAll(mercasmartEntities db)
         {
             var establecimientos = db.Establecimientos;
             return establecimientos;
