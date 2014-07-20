@@ -11,45 +11,64 @@ namespace mercasmartPersistence.Services
 
         public List<Models.Establecimiento> getProductosAll()
         {
-            var a = new mercasmartEntities().Establecimientos.ToList();
-            List<Models.Establecimiento> modelEstablecimiento;
-            EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(a, out modelEstablecimiento);
-            return modelEstablecimiento;
+            using (var db = new mercasmartEntities())
+            {
+                var establecimientos = getProductosAll(db).ToList();
+                List<Models.Establecimiento> modelEstablecimiento;
+                EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
+                return modelEstablecimiento;
+            }
         }
-
 
         public List<Models.Establecimiento> getProductosByNombre(string nombre)
         {
-            var a = new mercasmartEntities().Establecimientos.Where(est => est.nombreEstablecimiento.Equals(nombre)).ToList();
-            List<Models.Establecimiento> modelEstablecimiento;
-            EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(a, out modelEstablecimiento);
-            return modelEstablecimiento;
+            using (var db = new mercasmartEntities())
+            {
+                var establecimientos = getProductosByNombre(db, nombre).ToList();
+                List<Models.Establecimiento> modelEstablecimiento;
+                EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
+                return modelEstablecimiento;
+            }
         }
-
 
         public List<Models.Establecimiento> getProductosByCodigo(string codigo)
         {
-            var a = new mercasmartEntities().Establecimientos.Where(est => est.codigoEstablecimiento.Equals(codigo)).ToList();
-            List<Models.Establecimiento> modelEstablecimiento;
-            EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(a, out modelEstablecimiento);
-            return modelEstablecimiento;
+            using (var db = new mercasmartEntities())
+            {
+                var establecimientos = getProductosByCodigo(db, codigo).ToList();
+                List<Models.Establecimiento> modelEstablecimiento;
+                EntityFramework.Mapping.EstablecimientosMap.mapEntityFrameworkToModel(establecimientos, out modelEstablecimiento);
+                return modelEstablecimiento;
+            }
         }
 
         public void modifyEstablecimiento(Models.Establecimiento establimientoModel)
         {
             using (mercasmartEntities db = new mercasmartEntities())
             {
-                var establecimientoAModificar = getProductosByCodigoII(db, establimientoModel.Codigo).FirstOrDefault();
+                var establecimientoAModificar = getProductosByCodigo(db, establimientoModel.Codigo).FirstOrDefault();
                 EntityFramework.Mapping.EstablecimientosMap.mapModelToEntityFramework(establimientoModel, ref establecimientoAModificar);
                 db.SaveChanges();
             }
         }
 
-        private IQueryable<Establecimientos> getProductosByCodigoII(mercasmartEntities db, string codigo)
+        private IQueryable<Establecimientos> getProductosByCodigo(mercasmartEntities db, string codigo)
         {
             var establecimientos = db.Establecimientos.Where(est => est.codigoEstablecimiento == codigo);
             return establecimientos;
-        }       
+        }
+
+        private IQueryable<Establecimientos> getProductosByNombre(mercasmartEntities db, string nombre)
+        {
+            var establecimientos = db.Establecimientos.Where(est => est.nombreEstablecimiento == nombre);
+            return establecimientos;
+        }
+
+        private IQueryable<Establecimientos> getProductosAll(mercasmartEntities db)
+        {
+            var establecimientos = db.Establecimientos;
+            return establecimientos;
+        }
 
     }
 }  
