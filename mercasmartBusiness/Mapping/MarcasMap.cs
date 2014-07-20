@@ -9,18 +9,19 @@ namespace mercasmartBusiness.Mapping
     class MarcasMap
     {
 
-        internal static void mapModelToEntity(Establecimiento model, out Entities.Establecimiento entity)
+        internal static void mapModelToEntity(Marca model, out Entities.Marca entity)
         {
-            entity = new Entities.Establecimiento();
+            entity = new Entities.Marca();
             entity.Nombre = model.Nombre;
             entity.Codigo = model.Codigo;
+            entity.MarcaBlanca = model.MarcaBlanca;
         }
-        internal static void mapModelToEntity(List<Establecimiento> models, out List<Entities.Establecimiento> entities)
+        internal static void mapModelToEntity(List<Marca> models, out List<Entities.Marca> entities)
         {
-            var entitiesCopy = new List<Entities.Establecimiento>();
+            var entitiesCopy = new List<Entities.Marca>();
             models.ForEach(model =>
             {
-                var entity = new Entities.Establecimiento();
+                var entity = new Entities.Marca();
                 mapModelToEntity(model, out entity);
                 entitiesCopy.Add(entity);
             });
@@ -28,11 +29,12 @@ namespace mercasmartBusiness.Mapping
         }
 
 
-        internal static void mapEntityToModel(Entities.Establecimiento entity, out Establecimiento model)
+        internal static void mapEntityToModel(Entities.Marca entity, out Marca model)
         {
-            model = new Establecimiento();
+            model = new Marca();
             model.Nombre = entity.Nombre;
             model.Codigo = entity.Codigo;
+            model.MarcaBlanca = entity.MarcaBlanca;
         }
     }
 }

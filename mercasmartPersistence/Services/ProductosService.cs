@@ -10,7 +10,7 @@ namespace mercasmartPersistence.Services
     {
         public List<Models.Producto> getProductosAll()
         {
-            using (var db = new mercasmartEntities())
+            using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
                 var listadoProductos = getProductosAll(db).ToList();
                 List<Models.Producto> modelProductos;

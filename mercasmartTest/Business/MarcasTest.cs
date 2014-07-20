@@ -12,6 +12,11 @@ namespace mercasmartTest.Business
         [TestMethod]
         public void ListarTodasLasMarcas()
         {
+            var marcasService = new mercasmartBusiness.Services.MarcasServices();
+
+            var listaMarcas = marcasService.getMarcasAll();
+
+            Assert.IsTrue(listaMarcas.Count > 0);
         }
     }
 }

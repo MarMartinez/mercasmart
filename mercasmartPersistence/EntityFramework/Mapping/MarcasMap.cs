@@ -8,28 +8,30 @@ namespace mercasmartPersistence.EntityFramework.Mapping
     public class MarcasMap
     {
 
-        internal static void mapEntityFrameworkToModel(Establecimientos efModel, out Models.Establecimiento model)
+        internal static void mapEntityFrameworkToModel(Marcas efModel, out Models.Marca model)
         {
-            model = new Models.Establecimiento();
-            model.Nombre = efModel.nombreEstablecimiento;
-            model.Codigo = efModel.codigoEstablecimiento;
+            model = new Models.Marca();
+            model.Nombre = efModel.nombreMarca;
+            model.Codigo = efModel.codigoMarca;
+            model.MarcaBlanca = efModel.marcaBlanca;
         }
-        internal static void mapEntityFrameworkToModel(List<Establecimientos> efModels, out List<Models.Establecimiento> models)
+        internal static void mapEntityFrameworkToModel(List<Marcas> efModels, out List<Models.Marca> models)
         {
-            var modelsCopy = new List<Models.Establecimiento>();
+            var modelsCopy = new List<Models.Marca>();
             efModels.ForEach(efModel =>
             {
-                Models.Establecimiento model;
+                Models.Marca model;
                 mapEntityFrameworkToModel(efModel, out model);
                 modelsCopy.Add(model);
             });
             models = modelsCopy;
         }
 
-        internal static void mapModelToEntityFramework(Models.Establecimiento model, ref Establecimientos efModel)
+        internal static void mapModelToEntityFramework(Models.Marca model, ref Marcas efModel)
         {
-            efModel.nombreEstablecimiento = model.Nombre;
-            efModel.codigoEstablecimiento = model.Codigo;
+            efModel.nombreMarca = model.Nombre;
+            efModel.codigoMarca = model.Codigo;
+            efModel.marcaBlanca = model.MarcaBlanca;
         }
 
     }
