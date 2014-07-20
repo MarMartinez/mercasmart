@@ -13,6 +13,7 @@ namespace mercasmartBusiness.Services
         public ProductoService()
         {
             m_persistenceService = new mercasmartPersistence.Services.ProductosService();
+
         }
 
         public List<Entities.Producto> getProductosAll()
