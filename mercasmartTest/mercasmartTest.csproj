@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Business\EstablecimientosTest.cs" />
     <Compile Include="Business\MarcasTest.cs" />
-    <Compile Include="Business\ProductosTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,11 +54,6 @@
       <Project>{F9C9231E-94AD-4495-9F14-27DC6B417304}</Project>
       <Name>mercasmartBusiness</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
