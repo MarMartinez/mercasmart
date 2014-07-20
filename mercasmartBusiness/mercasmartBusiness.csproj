@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\Establecimiento.cs" />
     <Compile Include="Entities\Producto.cs" />
     <Compile Include="Mapping\EstablecimientosMap.cs" />

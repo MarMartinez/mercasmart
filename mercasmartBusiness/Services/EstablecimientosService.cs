@@ -20,7 +20,7 @@ namespace mercasmartBusiness.Services
         {
             var establimientosModels = new List<Establecimiento>();
 
-            establimientosModels = m_persistenceService.getProductosAll();
+            establimientosModels = m_persistenceService.getEstablecimientosAll();
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
@@ -28,13 +28,12 @@ namespace mercasmartBusiness.Services
 
             return establecimientosBusiness;
         }
-
 
         public List<Entities.Establecimiento> getEstablecimientosByNombre(string nombre)
         {
             var establimientosModels = new List<Establecimiento>();
 
-            establimientosModels = m_persistenceService.getProductosByNombre(nombre);
+            establimientosModels = m_persistenceService.getEstablecimientosByNombre(nombre);
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
@@ -43,12 +42,11 @@ namespace mercasmartBusiness.Services
             return establecimientosBusiness;
         }
 
-
         public List<Entities.Establecimiento> getEstablecimientosByCodigo(string codigo)
         {
             var establimientosModels = new List<Establecimiento>();
 
-            establimientosModels = m_persistenceService.getProductosByCodigo(codigo);
+            establimientosModels = m_persistenceService.getEstablecimientosByCodigo(codigo);
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
@@ -71,5 +69,6 @@ namespace mercasmartBusiness.Services
 
             //return establecimientosBusiness;
         }
+
     }
 }
