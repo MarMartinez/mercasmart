@@ -52,6 +52,18 @@ namespace mercasmartPersistence.Services
             }
         }
 
+        public List<Models.RelacionProductoEstablecimiento> getProductosByCodigoEstablecimiento(string codigo)
+        {
+            using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
+            {
+                var lstProductoEstablecimiento = db.RelacionProductoEstablecimiento.Where(rel => rel.codigoEstablecimiento.Equals(codigo)).ToList();
+
+                List<Models.RelacionProductoEstablecimiento> lstModelProductoEstablecimiento;
+                EntityFramework.Mapping.RelacionProdcutoEstablecimientoMap.mapEntityFrameworkToModel(lstProductoEstablecimiento, out lstModelProductoEstablecimiento);
+                return lstModelProductoEstablecimiento;
+            }
+        }
+
         private IQueryable<Establecimientos> getEstablecimientosByCodigo(mercasmartEntities db, string codigo)
         {
             var establecimientos = db.Establecimientos.Where(est => est.codigoEstablecimiento == codigo);

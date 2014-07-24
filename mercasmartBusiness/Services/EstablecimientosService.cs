@@ -66,18 +66,14 @@ namespace mercasmartBusiness.Services
             m_persistenceService.modifyEstablecimiento(establimientoModel);
         }
 
-        //public List<Entities.Producto> getProductosPorEstablecimiento(Entities.Establecimiento establecimiento)
-        //{
-        //    var productoElegidoModels = new List<Producto>();
+        public List<Entities.RelacionProductoEstablecimiento> getProductosPorCodigoEstablecimiento(string codigoEstablecimiento)
+        {
+            var entities = new List<Entities.RelacionProductoEstablecimiento>();
+            var models = new List<RelacionProductoEstablecimiento>();
 
-        //    productoElegidoModels = m_persistenceService.getEstablecimientosAll();
-
-        //    List<Entities.Producto> productoElegidoBusiness;
-
-        //    Mapping.ProductosMapping.mapModelToEntity(productoElegidoModels, out productoElegidoBusiness);
-
-        //    return productoElegidoBusiness;
-        //}
+            models = m_persistenceService.getProductosByCodigoEstablecimiento(codigoEstablecimiento);
+            return null;
+        }
 
     }
 }

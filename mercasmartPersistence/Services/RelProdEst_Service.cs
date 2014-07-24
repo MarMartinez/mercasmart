@@ -9,13 +9,13 @@ namespace mercasmartPersistence.Services
     public class RelProdEst_Service
     {
 
-        public List<Models.RelProdEst> getRelacionesProductoEstablecimientoAll()
+        public List<Models.RelacionProductoEstablecimiento> getRelacionesProductoEstablecimientoAll()
         {
             using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
                 var relaciones = getRelacionesAll(db).ToList();
-                List<Models.RelProdEst> modelRelProdEst;
-                EntityFramework.Mapping.RelProdEst_Map.mapEntityFrameworkToModel(relaciones, out modelRelProdEst);
+                List<Models.RelacionProductoEstablecimiento> modelRelProdEst;
+                EntityFramework.Mapping.RelacionProdcutoEstablecimientoMap.mapEntityFrameworkToModel(relaciones, out modelRelProdEst);
                 return modelRelProdEst;
             }
         }        
