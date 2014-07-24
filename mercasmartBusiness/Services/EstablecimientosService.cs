@@ -72,6 +72,9 @@ namespace mercasmartBusiness.Services
             var models = new List<RelacionProductoEstablecimiento>();
 
             models = m_persistenceService.getProductosByCodigoEstablecimiento(codigoEstablecimiento);
+
+            Mapping.
+
             return null;
         }
 

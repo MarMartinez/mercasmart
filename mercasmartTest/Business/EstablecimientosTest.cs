@@ -55,17 +55,17 @@ namespace mercasmartTest.Business
             Assert.AreEqual(alcampo[0].Nombre, "Alcampo");
         }
 
-        //[TestMethod]
-        //public void ListarProductosDeUnEstablecimiento()
-        //{
-        //    var estabServ = new mercasmartBusiness.Services.EstablecimientosService();
-        //    string establecimientoElegido = "mercadona";
-        //    var super = estabServ.getEstablecimientosByNombre(establecimientoElegido);
+        [TestMethod]
+        public void ListarProductosDeUnEstablecimiento()
+        {
+            var estabServ = new mercasmartBusiness.Services.EstablecimientosService();
 
-        //    var listaProductosSuper = estabServ.getProductosPorEstablecimiento(super[0]);
+            string establecimientoElegido = "mercadona";
 
-        //    Assert.IsTrue(listaProductosSuper.Count > 1);
-        //}
+            var listaProductosSuper = estabServ.getProductosPorCodigoEstablecimiento(establecimientoElegido);
+
+            Assert.IsTrue(listaProductosSuper.Count > 1);
+        }
 
     }
 }
