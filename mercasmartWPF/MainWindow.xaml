@@ -18,6 +18,6 @@
             en cualquier supermercado?
         </TextBlock>
         <Button Content="Ahorra en producto" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="136,147,0,0" Name="btnObtenerProductos" VerticalAlignment="Top" Width="158" Click="btnObtenerProductos_Click" />
-        <Button Content="Calcula el precio" Height="23" HorizontalAlignment="Left" Margin="525,147,0,0" Name="btnListaProductosSupermercado" VerticalAlignment="Top" Width="158" Grid.Row="1" />
+        <Button Content="Calcula el precio" Height="23" HorizontalAlignment="Left" Margin="525,147,0,0" Name="btnListaProductosSupermercado" VerticalAlignment="Top" Width="158" Grid.Row="1" Click="btnListaProductosSupermercado_Click" />
     </Grid>
 </Window>

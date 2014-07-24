@@ -44,11 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\Factories\Conexion.cs" />
-    <Compile Include="EntityFramework\Mapping\RelProdEst_Map.cs" />
+    <Compile Include="EntityFramework\Mapping\RelacionProductoEstablecimientoPrecioVigenciaMap.cs" />
+    <Compile Include="EntityFramework\Mapping\RelacionProdcutoEstablecimientoMap.cs" />
     <Compile Include="EntityFramework\Mapping\MarcasMap.cs" />
     <Compile Include="EntityFramework\Mapping\EstablecimientosMap.cs" />
     <Compile Include="EntityFramework\Mapping\ProductosMap.cs" />
-    <Compile Include="Models\RelProdEst.cs" />
+    <Compile Include="Models\RelacionProductoEstablecimientoPrecioVigencia.cs" />
+    <Compile Include="Models\RelacionProductoEstablecimiento.cs" />
     <Compile Include="Models\Marca.cs" />
     <Compile Include="Models\Establecimiento.cs" />
     <Compile Include="EntityFramework\mercasmart.Designer.cs">

@@ -30,5 +30,12 @@ namespace mercasmartWPF
             nuevaVentanaProductos.Show();
             this.Close();
         }
+
+        private void btnListaProductosSupermercado_Click(object sender, RoutedEventArgs e)
+        {
+            ListaCompraSupermercado nuevaVentanaListaSupermercado = new ListaCompraSupermercado();
+            nuevaVentanaListaSupermercado.Show();
+            this.Close();
+        }
     }
 }
