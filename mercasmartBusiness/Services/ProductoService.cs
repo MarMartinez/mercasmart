@@ -28,5 +28,10 @@ namespace mercasmartBusiness.Services
 
             return productosBusiness;
         }
+
+        public List<Entities.Producto> getProductosPorTipo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -40,13 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\RelProdEst.cs" />
     <Compile Include="Entities\Marca.cs" />
     <Compile Include="Entities\Establecimiento.cs" />
     <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Mapping\RelProdEst_Map.cs" />
     <Compile Include="Mapping\MarcasMap.cs" />
     <Compile Include="Mapping\EstablecimientosMap.cs" />
     <Compile Include="Mapping\ProductosMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RelProdEst_Service.cs" />
     <Compile Include="Services\MarcasServices.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />
     <Compile Include="Services\ProductoService.cs" />

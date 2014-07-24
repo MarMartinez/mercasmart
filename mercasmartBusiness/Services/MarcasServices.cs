@@ -27,6 +27,11 @@ namespace mercasmartBusiness.Services
             Mapping.MarcasMap.mapModelToEntity(marcasModels, out marcasBusiness);
 
             return marcasBusiness;
-        }        
+        }
+
+        public List<Entities.Marca> getMarcasNoBlancasAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

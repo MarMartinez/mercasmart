@@ -1,8 +1,34 @@
 ﻿<Window x:Class="mercasmartWPF.ListaCompraSupermercado"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ListaCompraSupermercado" Height="300" Width="300">
+        Title="ListaCompraSupermercado" Height="499" Width="798" Loaded="ListaCompraSupermercado_Loaded">
     <Grid>
-        
+        <Label Content="Producto" Height="33" Margin="12,12,670,0" Name="label1" VerticalAlignment="Top" FontSize="16" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="114,18,0,0" Name="cboxProductos" VerticalAlignment="Top" Width="164" />
+        <CheckBox Content="Elegir Marca" Height="24" HorizontalAlignment="Left" Margin="328,18,0,0" Name="chekMarca" VerticalAlignment="Top" FontSize="16" Width="121" Checked="chekMarca_checked"/>
+        <Label Content="Marca" FontSize="16" Height="33" Margin="475,13,207,0" Name="label2" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="577,19,0,0" Name="cboxMarcas" VerticalAlignment="Top" Width="164" IsEnabled="False" />
+        <DataGrid AutoGenerateColumns="False" Height="124" HorizontalAlignment="Left" Margin="56,68,0,0" Name="dgridProductos" VerticalAlignment="Top" Width="664" />
+        <ListView Height="132" HorizontalAlignment="Left" Margin="56,222,0,0" Name="listProductosSeleccionadas" VerticalAlignment="Top" Width="664">
+            <ListView.View>
+
+                <GridView AllowsColumnReorder="true"
+              ColumnHeaderToolTip="Productos Seleccionados por el usuario">
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=tipoProducto}" 
+                      Header="Producto" Width="230"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=nombreProducto}" 
+                      Header="Nombre" Width="230"/>                    
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=marcaProducto}" 
+                      Header="Marca" Width="200"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
