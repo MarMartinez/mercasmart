@@ -1,0 +1,32 @@
+﻿<Window x:Class="mercasmartWPF.ListaCompra.PrecioListaPorEstablecimiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PrecioListaPorEstablecimiento" Height="291" Width="710">
+    <Grid>
+        <ListView Height="132" HorizontalAlignment="Left" Margin="12,12,0,0" Name="listProductosSeleccionadas" VerticalAlignment="Top" Width="664">
+            <ListView.View>
+
+                <GridView AllowsColumnReorder="true"
+              ColumnHeaderToolTip="Productos Seleccionados por el usuario">
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=tipoProducto}" 
+                      Header="Producto" Width="170"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=nombreProducto}" 
+                      Header="Nombre" Width="170"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=marcaProducto}" 
+                      Header="Marca" Width="157"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=precioProducto}" 
+                      Header="Precio" Width="159"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

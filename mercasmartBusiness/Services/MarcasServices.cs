@@ -29,7 +29,7 @@ namespace mercasmartBusiness.Services
             return marcasBusiness;
         }
 
-        public List<Entities.Marca> getMarcasNoBlancasAll()
+        public List<Entities.Marca> getMarcasNoBlancas()
         {
             throw new NotImplementedException();
         }

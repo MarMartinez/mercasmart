@@ -58,11 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ListaCompraSupermercado.xaml">
+    <Page Include="ListaCompra\MontarListaCompra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListadoProductos.xaml">
+    <Page Include="ListaCompra\PrecioListaPorEstablecimiento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PorProducto\ListadoProductos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,10 +78,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ListaCompraSupermercado.xaml.cs">
-      <DependentUpon>ListaCompraSupermercado.xaml</DependentUpon>
+    <Compile Include="ListaCompra\MontarListaCompra.xaml.cs">
+      <DependentUpon>MontarListaCompra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListadoProductos.xaml.cs">
+    <Compile Include="ListaCompra\PrecioListaPorEstablecimiento.xaml.cs">
+      <DependentUpon>PrecioListaPorEstablecimiento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PorProducto\ListadoProductos.xaml.cs">
       <DependentUpon>ListadoProductos.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -116,6 +123,7 @@
       <Name>mercasmartBusiness</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
