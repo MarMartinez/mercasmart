@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using mercasmartBusiness.Entities;
 
 namespace mercasmartBusiness.ViewModels
 {
-    public class RelacionProductoEstablecimiento
+    public class ProductoEstablecimientoPrecio
     {
         public Producto Producto { get; set; }
         public Establecimiento Establecimiento { get; set; }

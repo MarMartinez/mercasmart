@@ -12,6 +12,7 @@ namespace mercasmartPersistence.EntityFramework.Mapping
         {
             model = new Models.RelacionProductoEstablecimientoPrecioVigencia();
             model.idRelacionProductoEstablecimiento = efModel.idRelacionProductoEstablecimiento;
+            //Mapping.EstablecimientosMap.mapEntityFrameworkToModel(model.Establecimiento, out efModel.RelacionProductoEstablecimiento.Establecimientos);
             model.Precio = (double)efModel.precio;
             model.Desde = efModel.desde;
             model.Hasta = efModel.hasta;

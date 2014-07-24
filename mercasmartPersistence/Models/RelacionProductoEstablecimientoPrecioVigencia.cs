@@ -8,6 +8,9 @@ namespace mercasmartPersistence.Models
     public class RelacionProductoEstablecimientoPrecioVigencia
     {
         public int idRelacionProductoEstablecimiento { get; set; }
+
+        public Producto Producto { get; set; }
+        public Establecimiento Establecimiento { get; set; }
         
         public double Precio { get; set; }
         public DateTime Desde { get; set; }

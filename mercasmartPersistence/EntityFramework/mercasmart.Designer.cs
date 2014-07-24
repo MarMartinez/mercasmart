@@ -142,22 +142,6 @@ namespace mercasmartPersistence.EntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<RelacionProductoEstablecimientoPrecioVigencia> RelacionProductoEstablecimientoPrecioVigencia
-        {
-            get
-            {
-                if ((_RelacionProductoEstablecimientoPrecioVigencia == null))
-                {
-                    _RelacionProductoEstablecimientoPrecioVigencia = base.CreateObjectSet<RelacionProductoEstablecimientoPrecioVigencia>("RelacionProductoEstablecimientoPrecioVigencia");
-                }
-                return _RelacionProductoEstablecimientoPrecioVigencia;
-            }
-        }
-        private ObjectSet<RelacionProductoEstablecimientoPrecioVigencia> _RelacionProductoEstablecimientoPrecioVigencia;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<sysdiagrams> sysdiagrams
         {
             get
@@ -186,6 +170,22 @@ namespace mercasmartPersistence.EntityFramework
             }
         }
         private ObjectSet<TiposProducto> _TiposProducto;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<RelacionProductoEstablecimientoPrecioVigencia> RelacionProductoEstablecimientoPrecioVigencia
+        {
+            get
+            {
+                if ((_RelacionProductoEstablecimientoPrecioVigencia == null))
+                {
+                    _RelacionProductoEstablecimientoPrecioVigencia = base.CreateObjectSet<RelacionProductoEstablecimientoPrecioVigencia>("RelacionProductoEstablecimientoPrecioVigencia");
+                }
+                return _RelacionProductoEstablecimientoPrecioVigencia;
+            }
+        }
+        private ObjectSet<RelacionProductoEstablecimientoPrecioVigencia> _RelacionProductoEstablecimientoPrecioVigencia;
 
         #endregion
 
@@ -224,14 +224,6 @@ namespace mercasmartPersistence.EntityFramework
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the RelacionProductoEstablecimientoPrecioVigencia EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToRelacionProductoEstablecimientoPrecioVigencia(RelacionProductoEstablecimientoPrecioVigencia relacionProductoEstablecimientoPrecioVigencia)
-        {
-            base.AddObject("RelacionProductoEstablecimientoPrecioVigencia", relacionProductoEstablecimientoPrecioVigencia);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the sysdiagrams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTosysdiagrams(sysdiagrams sysdiagrams)
@@ -245,6 +237,14 @@ namespace mercasmartPersistence.EntityFramework
         public void AddToTiposProducto(TiposProducto tiposProducto)
         {
             base.AddObject("TiposProducto", tiposProducto);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the RelacionProductoEstablecimientoPrecioVigencia EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRelacionProductoEstablecimientoPrecioVigencia(RelacionProductoEstablecimientoPrecioVigencia relacionProductoEstablecimientoPrecioVigencia)
+        {
+            base.AddObject("RelacionProductoEstablecimientoPrecioVigencia", relacionProductoEstablecimientoPrecioVigencia);
         }
 
         #endregion
