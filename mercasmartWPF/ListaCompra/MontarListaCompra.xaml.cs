@@ -17,43 +17,69 @@ namespace mercasmartWPF
     /// <summary>
     /// Interaction logic for ListaCompraSupermercado.xaml
     /// </summary>
-    public partial class ListaCompraSupermercado : Window
+    public partial class MontarListaCompra : Window
     {
         public mercasmartBusiness.Services.EstablecimientosService establecimiento;
         public mercasmartBusiness.Services.ProductoService producto;
         public mercasmartBusiness.Services.MarcasServices marca;
-        public ListaCompraSupermercado()
+        public mercasmartBusiness.Services.TiposProductoService tiposProducto;
+
+        public class listaComprasProductos
+        {
+        }
+
+        public MontarListaCompra()
         {
             InitializeComponent();          
         }
 
         private void ListaCompraSupermercado_Loaded(object sender, RoutedEventArgs e)
         {
-            //canvi de producto por tipo producto !! (tipoProducto)
-            //producto = new mercasmartBusiness.Services.ProductoService();
-            //List<mercasmartBusiness.Entities.Producto> listadoProductos = producto.getProductosPorTipo();
-            List<string> datosComboboxProductos = new List<string>();
-            //foreach (mercasmartBusiness.Entities.Producto prod in listadoProductos)
-            //{
-            //    datosComboboxProductos.Add(prod.nombre);
-            //}
-            datosComboboxProductos.Add("yogur");
-            datosComboboxProductos.Add("champu");
-            datosComboboxProductos.Add("leche");
-            cboxProductos.ItemsSource = datosComboboxProductos;            
+            try
+            {
+                tiposProducto = new mercasmartBusiness.Services.TiposProductoService();
+                List<mercasmartBusiness.Entities.TiposProducto> listaTiposProducto = tiposProducto.getTiposProductoAll();
+                List<string> datosComboboxProductos = new List<string>();
+                foreach (mercasmartBusiness.Entities.TiposProducto prod in listaTiposProducto)
+                {
+                    datosComboboxProductos.Add(prod.Descripcion);
+                }
+                cboxProductos.ItemsSource = datosComboboxProductos; 
+            }
+            catch (Exception ex)
+            {
+                MessageBoxResult mensajeError = MessageBox.Show("ERROR: " + ex.Message);
+            }         
         }
 
         private void cboxProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string productoSeleccionado = (sender as ComboBox).SelectedItem.ToString();
             producto = new mercasmartBusiness.Services.ProductoService();
-            List<mercasmartBusiness.Entities.Producto> listadoProductosPorTipo = producto.getProductosPorTipo();
+            List<mercasmartBusiness.Entities.Producto> listadoProductosPorTipo = producto.getProductosPorTipo(productoSeleccionado);
             dgridProductos.ItemsSource = listadoProductosPorTipo;
+            dgridProductos.AutoGenerateColumns = true;
         }
 
         private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
-            
+            // Si el producto no existe en el listView: agregar producto
+            // Si el producto ya existe en el listView: sumar producto
+
+            var productoSeleccionado = dgridProductos.SelectedItem;
+            string nombreProducto = (productoSeleccionado as mercasmartBusiness.Entities.Producto).nombre;
+
+            if (lViewListaProductos.Items.Contains(producto))
+            {
+                //S'haurà d'adaptar el sender com a item del grid view.
+                //buscar si el llistat de productes ja conté el item selected
+                //si el conté --> sumar, sino: afegir.
+            }
+            else
+            {
+                
+            }
+         
 
         }
 
