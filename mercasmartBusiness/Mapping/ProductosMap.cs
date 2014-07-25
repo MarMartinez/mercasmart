@@ -6,7 +6,7 @@ using mercasmartPersistence.Models;
 
 namespace mercasmartBusiness.Mapping
 {
-    class ProductosMapping
+    class ProductosMap
     {
         internal static void mapModelToEntity(Producto model, out Entities.Producto entity)
         {

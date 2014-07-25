@@ -24,7 +24,7 @@ namespace mercasmartBusiness.Services
 
             List<Entities.Producto> productosBusiness;
 
-            Mapping.ProductosMapping.mapModelToEntity(productosModels, out productosBusiness);
+            Mapping.ProductosMap.mapModelToEntity(productosModels, out productosBusiness);
 
             return productosBusiness;
         }

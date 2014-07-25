@@ -47,7 +47,7 @@
     <Compile Include="Mapping\ProductosEstablecimientoPrecioMap.cs" />
     <Compile Include="Mapping\MarcasMap.cs" />
     <Compile Include="Mapping\EstablecimientosMap.cs" />
-    <Compile Include="Mapping\ProductosMapping.cs" />
+    <Compile Include="Mapping\ProductosMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MarcasServices.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />

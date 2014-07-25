@@ -16,7 +16,7 @@ namespace mercasmartBusiness.Mapping
             Entities.Producto producto;
             Entities.Establecimiento establecimiento;
 
-            Mapping.ProductosMapping.mapModelToEntity(model.Producto, out producto);
+            Mapping.ProductosMap.mapModelToEntity(model.Producto, out producto);
             Mapping.EstablecimientosMap.mapModelToEntity(model.Establecimiento, out establecimiento);
 
             entity.Producto = producto;
@@ -41,9 +41,16 @@ namespace mercasmartBusiness.Mapping
         internal static void mapEntityToModel(ViewModels.ProductoEstablecimientoPrecio entity, out RelacionProductoEstablecimientoPrecioVigencia model)
         {
             model = new RelacionProductoEstablecimientoPrecioVigencia();
-            //model.Nombre = entity.Nombre;
-            //model.Codigo = entity.Codigo;
-            //model.MarcaBlanca = entity.MarcaBlanca;
+            model.Precio = entity.Precio;
+            model.Desde = entity.Hasta;
+
+            Establecimiento establecmiento;
+            Mapping.EstablecimientosMap.mapEntityToModel(entity.Establecimiento, out establecmiento);
+            model.Establecimiento = establecmiento;
+
+            Producto producto;
+            Mapping.ProductosMap.mapEntityToModel(entity.Producto, out producto);
+            model.Producto = producto;
         }
     }
 }
