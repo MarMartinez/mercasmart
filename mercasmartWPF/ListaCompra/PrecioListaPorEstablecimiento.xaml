@@ -1,7 +1,7 @@
 ﻿<Window x:Class="mercasmartWPF.ListaCompra.PrecioListaPorEstablecimiento"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PrecioListaPorEstablecimiento" Height="291" Width="710">
+        Title="PrecioListaPorEstablecimiento" Height="395" Width="710">
     <Grid>
         <ListView Height="132" HorizontalAlignment="Left" Margin="12,12,0,0" Name="listProductosSeleccionadas" VerticalAlignment="Top" Width="664">
             <ListView.View>

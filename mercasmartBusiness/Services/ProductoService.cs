@@ -9,10 +9,10 @@ namespace mercasmartBusiness.Services
 {
     public class ProductoService
     {
-        private mercasmartPersistence.Services.ProductosService m_persistenceService;
+        private mercasmartPersistence.Services.ProductosService m_persistenceProductoService;
         public ProductoService()
         {
-            m_persistenceService = new mercasmartPersistence.Services.ProductosService();
+            m_persistenceProductoService = new mercasmartPersistence.Services.ProductosService();
 
         }
 
@@ -20,7 +20,7 @@ namespace mercasmartBusiness.Services
         {
             var productosModels = new List<Producto>();
 
-            productosModels = m_persistenceService.getProductosAll();
+            productosModels = m_persistenceProductoService.getProductosAll();
 
             List<Entities.Producto> productosBusiness;
 
@@ -29,9 +29,17 @@ namespace mercasmartBusiness.Services
             return productosBusiness;
         }
 
-        public List<Entities.Producto> getProductosPorTipo()
+        public List<Entities.Producto> getProductosPorTipo(string tipoProducto)
         {
-            throw new NotImplementedException();
+            var productosModels = new List<Producto>();
+
+            productosModels = m_persistenceProductoService.getProductosPorTipo(tipoProducto);
+
+            List<Entities.Producto> productosPorTipoBusiness;
+
+            Mapping.ProductosMapping.mapModelToEntity(productosModels, out productosPorTipoBusiness);
+
+            return productosPorTipoBusiness;
         }
     }
 }

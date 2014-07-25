@@ -22,5 +22,9 @@ namespace mercasmartWPF.ListaCompra
         {
             InitializeComponent();
         }
+
+        //s'ha de poder modificar la llista!!
+        // listView amb preu total per establiment de la llista seleccionada
+        // al seleccionar un establiment, s'hauria de poder ensenyar els preus de cada producto, quin hi ha, quin no hi ha...(quin no hi ha??)
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using mercasmartWPF.ListaCompra;
 
 namespace mercasmartWPF
 {
@@ -33,7 +34,7 @@ namespace mercasmartWPF
 
         private void btnListaProductosSupermercado_Click(object sender, RoutedEventArgs e)
         {
-            ListaCompraSupermercado nuevaVentanaListaSupermercado = new ListaCompraSupermercado();
+            MontarListaCompra nuevaVentanaListaSupermercado = new MontarListaCompra();
             nuevaVentanaListaSupermercado.Show();
             this.Close();
         }

@@ -19,6 +19,22 @@ namespace mercasmartPersistence.Services
             }
         }
 
+        public List<Models.Producto> getProductosPorTipo(string tipoProducto)
+        {
+            using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
+            {
+                var listadoProductosPorTipo = getProductosPorTipo(db, tipoProducto).ToList();
+                List<Models.Producto> modelProductosPorTipo;
+                EntityFramework.Mapping.ProductosMap.mapEntityFrameworkToModel(listadoProductosPorTipo, out modelProductosPorTipo);
+                return modelProductosPorTipo;
+            }
+        }
+
+        private IQueryable<Productos> getProductosPorTipo(mercasmartEntities db, string tipoProducto)
+        {
+            var productosPorTipo = db.Productos.Where(prod => prod.TiposProducto.descripcionProducto.Equals(tipoProducto));
+            return productosPorTipo;
+        }
         private IQueryable<Productos> getProductosAll(mercasmartEntities db)
         {
             var productos = db.Productos;
@@ -39,5 +55,7 @@ namespace mercasmartPersistence.Services
             //return (List<Models.Producto>)productos;
         }
 
+
+        
     }
 }
