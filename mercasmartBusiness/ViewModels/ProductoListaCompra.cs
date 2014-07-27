@@ -7,6 +7,7 @@ namespace mercasmartBusiness.ViewModels
 {
     class ProductoListaCompra
     {
+        public int IdProducto { get; set; }
         public string Nombre { get; set; }
         public string CodigoTipo { get; set; }
         public string CodigoMarca { get; set; }
