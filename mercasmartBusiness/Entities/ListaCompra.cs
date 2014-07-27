@@ -14,21 +14,41 @@ namespace mercasmartBusiness.Entities
 
         public List<PrecioEstablecimientoListaCompra> getCalculoPreciosEstablecimientoListaCompra()
         {
+            PrecioEstablecimientoListaCompra precioEstablecimientoInsertado;
             List<PrecioEstablecimientoListaCompra> preciosEstablecimientoListaCompra = new List<PrecioEstablecimientoListaCompra>();
 
             // Recorrer establecimientos
             List<Establecimiento> listaEstablecimientos = getListaEstablecimientos();
             listaEstablecimientos.ForEach(establecimiento =>
             {
+
+                // Nuevo precio establecimiento
+                precioEstablecimientoInsertado = new PrecioEstablecimientoListaCompra { Establecimiento = establecimiento };
+
                 // Recorrer productos lista compra
                 ProductosListaCompra.ForEach(productoListaCompra =>
                 {
 
-                    Producto producto;
+                    ProductoEstablecimientoPrecio productoPrecio;
 
                     // Si no tenemos el producto buscaremos el producto mas economico por tipo
                     if (productoListaCompra.Producto == null)
-                        producto = getProductoEconomicoByEstablecimientoTipoProducto(establecimiento.Codigo, productoListaCompra.TipoProducto.Codigo);
+                        productoPrecio = getProductoEconomicoByEstablecimientoTipoProducto(establecimiento.Codigo, productoListaCompra.TipoProducto.Codigo);
+                    else
+                        productoPrecio = getProductoByEstablecimientoIdProducto(establecimiento.Codigo, productoListaCompra.Producto.IdProducto);
+
+                    if (productoPrecio == null)
+                        precioEstablecimientoInsertado.ProductosNoDisponibles.Add(productoPrecio.Producto);
+                    else
+                        precioEstablecimientoInsertado.ProductosDisponibles.Add(new PrecioProductoListaCompra
+                        {
+                            Producto = productoPrecio.Producto,
+                            PrecioUnidad = productoPrecio.Precio,
+                            PrecioTotal = productoPrecio.Precio * productoListaCompra.Cantidad
+                        });
+
+                    // Add del calculo para el establecimiento
+                    preciosEstablecimientoListaCompra.Add(precioEstablecimientoInsertado);
 
                 });
             });
@@ -36,16 +56,27 @@ namespace mercasmartBusiness.Entities
             return preciosEstablecimientoListaCompra;
         }
 
-
-        private Producto getProductoEconomicoByEstablecimientoTipoProducto(string codigoEstablecimiento, string codigoTipoProducto)
+        private ProductoEstablecimientoPrecio getProductoByEstablecimientoIdProducto(string codigoEstablecimiento, int idProducto)
         {
             // Get lista productos establecimiento
-            var productos = getProductosByCodigoEstablecimiento(codigoEstablecimiento);
+            var productosEstablecimiento = getProductosByCodigoEstablecimiento(codigoEstablecimiento);
+
+            // Select producto por id
+            var productoById = productosEstablecimiento.FirstOrDefault(producto => producto.Producto.IdProducto.Equals(idProducto));
+
+            return productoById;
+        }
+
+
+        private ProductoEstablecimientoPrecio getProductoEconomicoByEstablecimientoTipoProducto(string codigoEstablecimiento, string codigoTipoProducto)
+        {
+            // Get lista productos establecimiento
+            var productosEstablecimiento = getProductosByCodigoEstablecimiento(codigoEstablecimiento);
 
             // Select producto con precio mas bajo
-            var productoEconomico = productos.Where(producto => producto.Producto.TipoProducto.Codigo.Equals(codigoTipoProducto)).OrderBy(producto => producto.Precio).FirstOrDefault();
+            var productoEconomico = productosEstablecimiento.Where(producto => producto.Producto.TipoProducto.Codigo.Equals(codigoTipoProducto)).OrderBy(producto => producto.Precio).FirstOrDefault();
 
-            return productoEconomico.Producto;
+            return productoEconomico;
         }
 
         List<ProductoEstablecimientoPrecio> _productosByCodigoEstablecimiento;
