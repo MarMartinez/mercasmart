@@ -24,7 +24,7 @@ namespace mercasmartBusiness.Services
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
-            Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+            Mapping.Entities.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
 
             return establecimientosBusiness;
         }
@@ -38,7 +38,7 @@ namespace mercasmartBusiness.Services
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
-            Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+            Mapping.Entities.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
 
             return establecimientosBusiness;
         }
@@ -52,7 +52,7 @@ namespace mercasmartBusiness.Services
 
             List<Entities.Establecimiento> establecimientosBusiness;
 
-            Mapping.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
+            Mapping.Entities.EstablecimientosMap.mapModelToEntity(establimientosModels, out establecimientosBusiness);
 
             return establecimientosBusiness;
         }
@@ -61,7 +61,7 @@ namespace mercasmartBusiness.Services
         {
             Establecimiento establimientoModel;
 
-            Mapping.EstablecimientosMap.mapEntityToModel(establecimiento, out establimientoModel);
+            Mapping.Entities.EstablecimientosMap.mapEntityToModel(establecimiento, out establimientoModel);
 
             m_persistenceService.modifyEstablecimiento(establimientoModel);
         }
@@ -73,9 +73,9 @@ namespace mercasmartBusiness.Services
 
             models = m_persistenceService.getProductosByCodigoEstablecimiento(codigoEstablecimiento);
 
-            Mapping.ProductosEstablecimientoPrecioMap.mapModelToEntity(models, out entities);
+            Mapping.ViewModels.ProductosEstablecimientoPrecioMap.mapModelToEntity(models, out entities);
 
-            return null;
+            return entities;
         }
 
     }

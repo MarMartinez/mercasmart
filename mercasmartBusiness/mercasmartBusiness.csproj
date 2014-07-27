@@ -41,16 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\TiposProducto.cs" />
-    <Compile Include="Mapping\TiposProductoMap.cs" />
+    <Compile Include="Mapping\Entities\TiposProductoMap.cs" />
     <Compile Include="Services\TiposProductoService.cs" />
     <Compile Include="ViewModels\ProductoEstablecimientoPrecio.cs" />
     <Compile Include="Entities\Marca.cs" />
     <Compile Include="Entities\Establecimiento.cs" />
     <Compile Include="Entities\Producto.cs" />
-    <Compile Include="Mapping\ProductosEstablecimientoPrecioMap.cs" />
-    <Compile Include="Mapping\MarcasMap.cs" />
-    <Compile Include="Mapping\EstablecimientosMap.cs" />
-    <Compile Include="Mapping\ProductosMap.cs" />
+    <Compile Include="Mapping\ViewModels\ProductosEstablecimientoPrecioMap.cs" />
+    <Compile Include="Mapping\Entities\MarcasMap.cs" />
+    <Compile Include="Mapping\Entities\EstablecimientosMap.cs" />
+    <Compile Include="Mapping\Entities\ProductosMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MarcasServices.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />
