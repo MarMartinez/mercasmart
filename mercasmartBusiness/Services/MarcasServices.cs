@@ -24,7 +24,7 @@ namespace mercasmartBusiness.Services
 
             List<Entities.Marca> marcasBusiness;
 
-            Mapping.MarcasMap.mapModelToEntity(marcasModels, out marcasBusiness);
+            Mapping.Entities.MarcasMap.mapModelToEntity(marcasModels, out marcasBusiness);
 
             return marcasBusiness;
         }

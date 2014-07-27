@@ -12,7 +12,15 @@ namespace mercasmartPersistence.EntityFramework.Mapping
         {
             model = new Models.RelacionProductoEstablecimientoPrecioVigencia();
             model.idRelacionProductoEstablecimiento = efModel.idRelacionProductoEstablecimiento;
-            //Mapping.EstablecimientosMap.mapEntityFrameworkToModel(model.Establecimiento, out efModel.RelacionProductoEstablecimiento.Establecimientos);
+
+            Models.Establecimiento establecimiento;
+            Mapping.EstablecimientosMap.mapEntityFrameworkToModel(efModel.RelacionProductoEstablecimiento.Establecimientos, out establecimiento);
+            model.Establecimiento = establecimiento;
+
+            Models.Producto producto;
+            Mapping.ProductosMap.mapEntityFrameworkToModel(efModel.RelacionProductoEstablecimiento.Productos, out producto);
+            model.Producto = producto;
+
             model.Precio = (double)efModel.precio;
             model.Desde = efModel.desde;
             model.Hasta = efModel.hasta;
@@ -36,6 +44,7 @@ namespace mercasmartPersistence.EntityFramework.Mapping
             efModel.desde = model.Desde;
             efModel.hasta = model.Hasta;
         }
+
 
     }
 }

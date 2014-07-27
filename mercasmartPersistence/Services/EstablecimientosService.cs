@@ -56,12 +56,11 @@ namespace mercasmartPersistence.Services
         {
             using (var db = new EntityFramework.Factories.Conexion().mercasmartEntities())
             {
-                var lstProductoEstablecimiento = db.RelacionProductoEstablecimiento.Where(rel => rel.codigoEstablecimiento.Equals(codigo)).ToList();
+                var lstProductoEstablecimiento = db.RelacionProductoEstablecimientoPrecioVigencia.Where(rel => rel.RelacionProductoEstablecimiento.codigoEstablecimiento.Equals(codigo)).ToList();
 
                 List<Models.RelacionProductoEstablecimientoPrecioVigencia> lstModelProductoEstablecimiento;
-                //EntityFramework.Mapping.RelacionProductoEstablecimientoPrecioVigenciaMap.mapEntityFrameworkToModel(lstProductoEstablecimiento, out lstModelProductoEstablecimiento);
-                //return lstModelProductoEstablecimiento;
-                return null;
+                EntityFramework.Mapping.RelacionProductoEstablecimientoPrecioVigenciaMap.mapEntityFrameworkToModel(lstProductoEstablecimiento, out lstModelProductoEstablecimiento);
+                return lstModelProductoEstablecimiento;
             }
         }
 
