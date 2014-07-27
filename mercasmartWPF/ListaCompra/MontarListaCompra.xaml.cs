@@ -58,17 +58,25 @@ namespace mercasmartWPF
 
         private void cboxProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string productoSeleccionado = (sender as ComboBox).SelectedItem.ToString();
-            producto = new mercasmartBusiness.Services.ProductoService();
-            List<mercasmartBusiness.Entities.Producto> listadoProductosPorTipo = producto.getProductosPorTipo(productoSeleccionado);
-            dgridProductos.ItemsSource = listadoProductosPorTipo;
-            dgridProductos.AutoGenerateColumns = true;
+            try
+            {
+                string productoSeleccionado = (sender as ComboBox).SelectedItem.ToString();
+                producto = new mercasmartBusiness.Services.ProductoService();
+                List<mercasmartBusiness.Entities.Producto> listadoProductosPorTipo = producto.getProductosPorTipo(productoSeleccionado);
+                dgridProductos.ItemsSource = listadoProductosPorTipo;
+                dgridProductos.AutoGenerateColumns = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBoxResult error = MessageBox.Show("ERROR: " + ex.Message);
+            }
+            
         }
 
         private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
-            // fer gridView amb ProductoListaCompra de sortida
-            // mirar com s'afegeixen nous camps a un gridView
+        //     fer gridView amb ProductoListaCompra de sortida
+        //     mirar com s'afegeixen nous camps a un gridView
             
             //ProductoListaCompra productoListaCompra = new ProductoListaCompra();
             //var productoSeleccionado = dgridProductos.SelectedItem;
