@@ -67,23 +67,26 @@ namespace mercasmartWPF
 
         private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
-            ProductoListaCompra productoListaCompra = new ProductoListaCompra();
-            var productoSeleccionado = dgridProductos.SelectedItem;
+            // fer gridView amb ProductoListaCompra de sortida
+            // mirar com s'afegeixen nous camps a un gridView
+            
+            //ProductoListaCompra productoListaCompra = new ProductoListaCompra();
+            //var productoSeleccionado = dgridProductos.SelectedItem;
 
-            string nombreProducto = (productoSeleccionado as mercasmartBusiness.Entities.Producto).nombre;
-            productoListaCompra.Nombre = nombreProducto;
-            productoListaCompra.Cantidad = 1;
-            lViewListaProductos.TryFindResource(productoListaCompra);
+            //string nombreProducto = (productoSeleccionado as mercasmartBusiness.Entities.Producto).nombre;
+            //productoListaCompra.Nombre = nombreProducto;
+            //productoListaCompra.Cantidad = 1;
+            ////lViewListaProductos.
             
 
-            if (lViewListaProductos.Items.Contains(productoListaCompra))
-            {
-                listaProductosCompra.Where(prod => prod.Nombre.Equals(nombreProducto)).First().Cantidad += 1;
-            }
-            else
-            {
-                lViewListaProductos.Items.Add(productoListaCompra);                
-            }         
+            //if (lViewListaProductos.Items.Contains(productoListaCompra))
+            //{
+            //    listaProductosCompra.Where(prod => prod.Nombre.Equals(nombreProducto)).First().Cantidad += 1;
+            //}
+            //else
+            //{
+            //    lViewListaProductos.Items.Add(productoListaCompra);                
+            //}         
 
         }
         

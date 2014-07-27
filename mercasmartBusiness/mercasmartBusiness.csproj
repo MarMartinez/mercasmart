@@ -43,6 +43,8 @@
     <Compile Include="Entities\TiposProducto.cs" />
     <Compile Include="Mapping\Entities\TiposProductoMap.cs" />
     <Compile Include="Services\TiposProductoService.cs" />
+    <Compile Include="ViewModels\PrecioEstablecimientoListaCompra.cs" />
+    <Compile Include="ViewModels\PrecioProductoListaCompra.cs" />
     <Compile Include="ViewModels\ProductoEstablecimientoPrecio.cs" />
     <Compile Include="Entities\Marca.cs" />
     <Compile Include="Entities\Establecimiento.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="Services\MarcasServices.cs" />
     <Compile Include="Services\EstablecimientosService.cs" />
     <Compile Include="Services\ProductoService.cs" />
+    <Compile Include="ViewModels\ProductoListaCompra.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mercasmartPersistence\mercasmartPersistence.csproj">
