@@ -6,7 +6,7 @@ using mercasmartBusiness.Entities;
 
 namespace mercasmartBusiness.ViewModels
 {
-    class PrecioEstablecimientoListaCompra
+    public class PrecioEstablecimientoListaCompra
     {
         public Establecimiento Establecimiento { get; set; }
         public double Total { get; set; }
