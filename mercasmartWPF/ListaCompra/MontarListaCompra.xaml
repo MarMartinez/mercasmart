@@ -3,27 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ListaCompraSupermercado" Height="539" Width="798" Loaded="ListaCompraSupermercado_Loaded" IsManipulationEnabled="True">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" Height="321" HorizontalAlignment="Left" Margin="37,53,0,0" Name="dgridProductos" VerticalAlignment="Top" Width="290" IsEnabled="True" IsReadOnly="True" />
-        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,14,457,0" Name="cboxProductos" VerticalAlignment="Top" Width="194" SelectionChanged="cboxProductos_SelectionChanged"/>
-        <Label Content="Producto: " Height="38" HorizontalAlignment="Left" Margin="37,9,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" />
-        <Button Content=">>" Height="54" HorizontalAlignment="Left" Margin="367,129,0,0" Name="btnAgregarProducto" VerticalAlignment="Top" Width="62" FontSize="16" Click="btnAgregarProducto_Click" />
-        <Button Content="&lt;&lt;" Height="54" HorizontalAlignment="Left" Margin="367,245,0,0" Name="btnEliminarProducto" VerticalAlignment="Top" Width="62" FontSize="16" />
-        <ListView Height="321" HorizontalAlignment="Left" Margin="472,53,0,0" Name="lViewListaProductos" VerticalAlignment="Top" Width="271">
-            <ListView.View>
-
-                <GridView AllowsColumnReorder="true"
-              ColumnHeaderToolTip="Productos Seleccionados por el usuario">
-
-                    <GridViewColumn DisplayMemberBinding="{Binding Nombre}" 
-                                    Header="Nombre" 
-                                    Width="170"/>
-
-                    <GridViewColumn DisplayMemberBinding="{Binding Cantidad}"
-                                    Header="Cantidad" 
-                                    Width="100"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid AutoGenerateColumns="False" Height="321" HorizontalAlignment="Left" Margin="13,53,0,0" Name="dgridProductos" VerticalAlignment="Top" Width="290" IsEnabled="True" IsReadOnly="True" />
+        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,14,541,0" Name="cboxProductos" VerticalAlignment="Top" Width="141" SelectionChanged="cboxProductos_SelectionChanged"/>
+        <Label Content="Producto: " Height="38" HorizontalAlignment="Left" Margin="13,9,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" />
+        <Button Content=">>" Height="54" HorizontalAlignment="Left" Margin="330,129,0,0" Name="btnAgregarProducto" VerticalAlignment="Top" Width="62" FontSize="16" Click="btnAgregarProducto_Click" />
+        <Button Content="&lt;&lt;" Height="54" HorizontalAlignment="Left" Margin="330,245,0,0" Name="btnEliminarProducto" VerticalAlignment="Top" Width="62" FontSize="16" />
         <Button Content="Calcular precio por establecimiento" Height="40" HorizontalAlignment="Left" Margin="266,421,0,0" Name="button1" VerticalAlignment="Top" Width="267" FontSize="16" Background="#AAF21313" BorderBrush="#FFB10000" Foreground="#FFB10000" />
+        <DataGrid AutoGenerateColumns="False" Height="321" HorizontalAlignment="Left" Margin="418,53,0,0" Name="dgridListaCompra" VerticalAlignment="Top" Width="332" />
+        <CheckBox Content="Marca Blanca" Height="29" HorizontalAlignment="Left" Margin="254,15,0,0" Name="checkBox1" VerticalAlignment="Top" FontSize="16" />
     </Grid>
 </Window>
