@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using mercasmartWPF.ListaCompra;
+using System.Collections.ObjectModel;
 
 namespace mercasmartWPF
 {
@@ -20,6 +21,7 @@ namespace mercasmartWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
