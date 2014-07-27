@@ -14,13 +14,13 @@
                 <GridView AllowsColumnReorder="true"
               ColumnHeaderToolTip="Productos Seleccionados por el usuario">
 
-                    <GridViewColumn DisplayMemberBinding=
-                          "{Binding Path=nombreProducto}" 
-                      Header="Nombre" Width="170"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nombre}" 
+                                    Header="Nombre" 
+                                    Width="170"/>
 
-                    <GridViewColumn DisplayMemberBinding=
-                          "{Binding Path=cantidad}" 
-                      Header="Cantidad" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Cantidad}"
+                                    Header="Cantidad" 
+                                    Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

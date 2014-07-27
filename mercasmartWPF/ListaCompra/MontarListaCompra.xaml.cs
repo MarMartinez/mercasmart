@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using mercasmartBusiness;
+using System.Collections;
 
 namespace mercasmartWPF
 {
@@ -23,14 +24,17 @@ namespace mercasmartWPF
         public mercasmartBusiness.Services.ProductoService producto;
         public mercasmartBusiness.Services.MarcasServices marca;
         public mercasmartBusiness.Services.TiposProductoService tiposProducto;
+        List<ProductoListaCompra> listaProductosCompra = new List<ProductoListaCompra>();
 
-        public class listaComprasProductos
+        private class ProductoListaCompra
         {
+            public string Nombre { get; set; }
+            public int Cantidad { get; set; }
         }
 
         public MontarListaCompra()
         {
-            InitializeComponent();          
+            InitializeComponent();
         }
 
         private void ListaCompraSupermercado_Loaded(object sender, RoutedEventArgs e)
@@ -47,7 +51,7 @@ namespace mercasmartWPF
                 cboxProductos.ItemsSource = datosComboboxProductos; 
             }
             catch (Exception ex)
-            {
+            {   
                 MessageBoxResult mensajeError = MessageBox.Show("ERROR: " + ex.Message);
             }         
         }
@@ -63,30 +67,25 @@ namespace mercasmartWPF
 
         private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
-            // Si el producto no existe en el listView: agregar producto
-            // Si el producto ya existe en el listView: sumar producto
-
+            ProductoListaCompra productoListaCompra = new ProductoListaCompra();
             var productoSeleccionado = dgridProductos.SelectedItem;
-            string nombreProducto = (productoSeleccionado as mercasmartBusiness.Entities.Producto).nombre;
 
-            if (lViewListaProductos.Items.Contains(producto))
+            string nombreProducto = (productoSeleccionado as mercasmartBusiness.Entities.Producto).nombre;
+            productoListaCompra.Nombre = nombreProducto;
+            productoListaCompra.Cantidad = 1;
+            lViewListaProductos.TryFindResource(productoListaCompra);
+            
+
+            if (lViewListaProductos.Items.Contains(productoListaCompra))
             {
-                //S'haurà d'adaptar el sender com a item del grid view.
-                //buscar si el llistat de productes ja conté el item selected
-                //si el conté --> sumar, sino: afegir.
+                listaProductosCompra.Where(prod => prod.Nombre.Equals(nombreProducto)).First().Cantidad += 1;
             }
             else
             {
-                
-            }
-         
+                lViewListaProductos.Items.Add(productoListaCompra);                
+            }         
 
         }
-
-
-        
-        
-
         
     }
 }

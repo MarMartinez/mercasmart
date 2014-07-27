@@ -37,7 +37,7 @@ namespace mercasmartBusiness.Services
 
             List<Entities.Producto> productosPorTipoBusiness;
 
-            Mapping.ProductosMapping.mapModelToEntity(productosModels, out productosPorTipoBusiness);
+            Mapping.ProductosMap.mapModelToEntity(productosModels, out productosPorTipoBusiness);
 
             return productosPorTipoBusiness;
         }
