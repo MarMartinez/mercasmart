@@ -6,7 +6,7 @@ using mercasmartBusiness.Entities;
 
 namespace mercasmartBusiness.ViewModels
 {
-    class PrecioProductoListaCompra
+    public class PrecioProductoListaCompra
     {
         public Producto Producto { get; set; }
         public double PrecioUnidad { get; set; } // Precio del producto en el establecimiento seleccionado

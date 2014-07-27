@@ -11,6 +11,7 @@ namespace mercasmartBusiness.Entities
     {
         public int IdProducto { get; set; }
         public string Nombre { get; set; }
-        public Marca Marca { get; set; }        
+        public Marca Marca { get; set; }
+        public TiposProducto TipoProducto { get; set; }
     }
 }
