@@ -12,6 +12,11 @@ namespace mercasmartBusiness.Entities
 
         public List<ProductoListaCompra> ProductosListaCompra { get; set; }
 
+        public ListaCompra()
+        {
+            ProductosListaCompra = new List<ProductoListaCompra>();
+        }
+
         public List<PrecioEstablecimientoListaCompra> getCalculoPreciosEstablecimientoListaCompra()
         {
             PrecioEstablecimientoListaCompra precioEstablecimientoInsertado;
@@ -23,7 +28,7 @@ namespace mercasmartBusiness.Entities
             {
 
                 // Nuevo precio establecimiento
-                precioEstablecimientoInsertado = new PrecioEstablecimientoListaCompra { Establecimiento = establecimiento };
+                precioEstablecimientoInsertado = new PrecioEstablecimientoListaCompra(establecimiento);
 
                 // Recorrer productos lista compra
                 ProductosListaCompra.ForEach(productoListaCompra =>
@@ -38,19 +43,15 @@ namespace mercasmartBusiness.Entities
                         productoPrecio = getProductoByEstablecimientoIdProducto(establecimiento.Codigo, productoListaCompra.Producto.IdProducto);
 
                     if (productoPrecio == null)
-                        precioEstablecimientoInsertado.ProductosNoDisponibles.Add(productoPrecio.Producto);
+                        precioEstablecimientoInsertado.addProductoListaCompraNoDisponible(productoListaCompra);
                     else
-                        precioEstablecimientoInsertado.ProductosDisponibles.Add(new PrecioProductoListaCompra
-                        {
-                            Producto = productoPrecio.Producto,
-                            PrecioUnidad = productoPrecio.Precio,
-                            PrecioTotal = productoPrecio.Precio * productoListaCompra.Cantidad
-                        });
-
-                    // Add del calculo para el establecimiento
-                    preciosEstablecimientoListaCompra.Add(precioEstablecimientoInsertado);
+                        precioEstablecimientoInsertado.addProductoDisponible(productoPrecio.Producto, productoPrecio.Precio, productoListaCompra.Cantidad);
 
                 });
+
+                // Add del calculo para el establecimiento
+                preciosEstablecimientoListaCompra.Add(precioEstablecimientoInsertado);
+
             });
 
             return preciosEstablecimientoListaCompra;
@@ -67,7 +68,6 @@ namespace mercasmartBusiness.Entities
             return productoById;
         }
 
-
         private ProductoEstablecimientoPrecio getProductoEconomicoByEstablecimientoTipoProducto(string codigoEstablecimiento, string codigoTipoProducto)
         {
             // Get lista productos establecimiento
@@ -83,8 +83,12 @@ namespace mercasmartBusiness.Entities
         private List<ProductoEstablecimientoPrecio> getProductosByCodigoEstablecimiento(string codigoEstablecimiento)
         {
             if (_productosByCodigoEstablecimiento == null)
-                _productosByCodigoEstablecimiento = new EstablecimientosService().getProductosPorCodigoEstablecimiento(codigoEstablecimiento);
-            return _productosByCodigoEstablecimiento;
+                _productosByCodigoEstablecimiento = new List<ProductoEstablecimientoPrecio>();
+
+            if (!_productosByCodigoEstablecimiento.Any(producto => producto.Establecimiento.Codigo.Equals(codigoEstablecimiento)))
+                _productosByCodigoEstablecimiento.AddRange(new EstablecimientosService().getProductosPorCodigoEstablecimiento(codigoEstablecimiento));
+
+            return _productosByCodigoEstablecimiento.Where(producto => producto.Establecimiento.Codigo.Equals(codigoEstablecimiento)).ToList();
         }
 
         List<Establecimiento> _listaEstablecimientos;
