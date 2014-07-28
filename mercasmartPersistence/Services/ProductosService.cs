@@ -32,7 +32,8 @@ namespace mercasmartPersistence.Services
 
         private IQueryable<Productos> getProductosPorTipo(mercasmartEntities db, string tipoProducto)
         {
-            var productosPorTipo = db.Productos.Where(prod => prod.TiposProducto.descripcionProducto.Equals(tipoProducto));
+            var productosPorTipo = db.Productos.Where(prod => prod.TiposProducto.descripcionProducto == tipoProducto);
+            //var productosPorTipo = db.Productos.Where(prod => prod.TiposProducto.descripcionProducto.Equals(tipoProducto));
             return productosPorTipo;
         }
         private IQueryable<Productos> getProductosAll(mercasmartEntities db)

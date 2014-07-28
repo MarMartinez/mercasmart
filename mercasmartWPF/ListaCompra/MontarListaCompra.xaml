@@ -1,15 +1,18 @@
 ﻿<Window x:Class="mercasmartWPF.MontarListaCompra"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ListaCompraSupermercado" Height="539" Width="798" Loaded="ListaCompraSupermercado_Loaded" IsManipulationEnabled="True">
+        Title="ListaCompraSupermercado" Height="611" Width="798" Loaded="ListaCompraSupermercado_Loaded" IsManipulationEnabled="True">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" Height="321" HorizontalAlignment="Left" Margin="13,53,0,0" Name="dgridProductos" VerticalAlignment="Top" Width="290" IsEnabled="True" IsReadOnly="True" />
-        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,14,541,0" Name="cboxProductos" VerticalAlignment="Top" Width="141" SelectionChanged="cboxProductos_SelectionChanged"/>
-        <Label Content="Producto: " Height="38" HorizontalAlignment="Left" Margin="13,9,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" />
-        <Button Content=">>" Height="54" HorizontalAlignment="Left" Margin="330,129,0,0" Name="btnAgregarProducto" VerticalAlignment="Top" Width="62" FontSize="16" Click="btnAgregarProducto_Click" />
-        <Button Content="&lt;&lt;" Height="54" HorizontalAlignment="Left" Margin="330,245,0,0" Name="btnEliminarProducto" VerticalAlignment="Top" Width="62" FontSize="16" />
-        <Button Content="Calcular precio por establecimiento" Height="40" HorizontalAlignment="Left" Margin="266,421,0,0" Name="button1" VerticalAlignment="Top" Width="267" FontSize="16" Background="#AAF21313" BorderBrush="#FFB10000" Foreground="#FFB10000" />
-        <DataGrid AutoGenerateColumns="False" Height="321" HorizontalAlignment="Left" Margin="418,53,0,0" Name="dgridListaCompra" VerticalAlignment="Top" Width="332" />
-        <CheckBox Content="Marca Blanca" Height="29" HorizontalAlignment="Left" Margin="254,15,0,0" Name="checkBox1" VerticalAlignment="Top" FontSize="16" />
+        <Button Content="Calcular precio por establecimiento" Height="40" HorizontalAlignment="Left" Margin="245,477,0,0" Name="btnCalcular" VerticalAlignment="Top" Width="267" FontSize="16" Background="#AAF21313" BorderBrush="#FFB10000" Foreground="#FFB10000" />
+        <DataGrid AutoGenerateColumns="False" Height="209" HorizontalAlignment="Left" Margin="26,42,0,0" Name="dgridProducto" VerticalAlignment="Top" Width="255" SelectionChanged="dgridProducto_SelectionChanged"/>
+        <DataGrid AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left" Margin="26,298,0,0" Name="dgridMarca" VerticalAlignment="Top" Width="255" />
+        <DataGrid AutoGenerateColumns="False" Height="406" HorizontalAlignment="Left" Margin="378,42,0,0" Name="dgridLista" VerticalAlignment="Top" Width="368" />
+        <Label Content="Productos:" Height="37" HorizontalAlignment="Left" Margin="26,9,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" Width="164" />
+        <Label Content="Lista de la compra:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="378,9,0,0" Name="label2" VerticalAlignment="Top" Width="164" />
+        <Label Content="Marcas:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="26,262,0,0" Name="label3" VerticalAlignment="Top" Width="164" />
+        <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,94,0,0" Name="btnAñadirProducto" VerticalAlignment="Top" Width="46" />
+        <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,368" Name="btnEliminarProducto" VerticalAlignment="Bottom" Width="46" />
+        <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,322,0,0" Name="btnAñadirMarca" VerticalAlignment="Top" Width="46" />
+        <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,140" Name="btnEliminarMarca" VerticalAlignment="Bottom" Width="46" />
     </Grid>
 </Window>

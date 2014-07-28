@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using mercasmartBusiness;
 using System.Collections;
+using mercasmartBusiness.ViewModels;
+using mercasmartBusiness.Entities;
 
 namespace mercasmartWPF
 {
@@ -26,11 +28,13 @@ namespace mercasmartWPF
         public mercasmartBusiness.Services.TiposProductoService tiposProducto;
         List<ProductoListaCompra> listaProductosCompra = new List<ProductoListaCompra>();
 
-        private class ProductoListaCompra
+        private class productoListadoMarca
         {
-            public string Nombre { get; set; }
-            public int Cantidad { get; set; }
+            internal Producto Producto { get; set; }
+            internal string DescripcionProducto { get; set; }
+            internal string NombreMarca { get; set; }
         }
+        List<productoListadoMarca> listaProductosPorTipoYMarca;
 
         public MontarListaCompra()
         {
@@ -43,60 +47,48 @@ namespace mercasmartWPF
             {
                 tiposProducto = new mercasmartBusiness.Services.TiposProductoService();
                 List<mercasmartBusiness.Entities.TiposProducto> listaTiposProducto = tiposProducto.getTiposProductoAll();
-                List<string> datosComboboxProductos = new List<string>();
-                foreach (mercasmartBusiness.Entities.TiposProducto prod in listaTiposProducto)
-                {
-                    datosComboboxProductos.Add(prod.Descripcion);
-                }
-                cboxProductos.ItemsSource = datosComboboxProductos; 
+                dgridProducto.AutoGenerateColumns = true;
+                //dgridProducto.Columns[1].MinWidth = dgridProducto.Width;
+                dgridProducto.ItemsSource = listaTiposProducto;
+                dgridProducto.Columns[0].Visibility = System.Windows.Visibility.Hidden;
             }
             catch (Exception ex)
-            {   
+            {
                 MessageBoxResult mensajeError = MessageBox.Show("ERROR: " + ex.Message);
-            }         
+            }
         }
 
-        private void cboxProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dgridProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                string productoSeleccionado = (sender as ComboBox).SelectedItem.ToString();
                 producto = new mercasmartBusiness.Services.ProductoService();
-                List<mercasmartBusiness.Entities.Producto> listadoProductosPorTipo = producto.getProductosPorTipo(productoSeleccionado);
-                dgridProductos.ItemsSource = listadoProductosPorTipo;
-                dgridProductos.AutoGenerateColumns = true;
+                productoListadoMarca productoPorMarca = new productoListadoMarca();
+                listaProductosPorTipoYMarca = new List<productoListadoMarca>();
+
+                TiposProducto tipoProductoSeleccionado = (TiposProducto)(sender as DataGrid).SelectedItem;
+                string codigoTipoProducto = tipoProductoSeleccionado.Codigo;
+                List<Producto> listaProductosConMarca = new List<Producto>();
+                listaProductosConMarca = producto.getProductosPorTipo(codigoTipoProducto);
+                foreach (var prod in listaProductosCompra)
+                {
+                    productoPorMarca.Producto = prod.Producto;
+                    productoPorMarca.DescripcionProducto = prod.TipoProducto.Codigo;
+                    productoPorMarca.NombreMarca = prod.Producto.Marca.Nombre;
+                    listaProductosPorTipoYMarca.Add(productoPorMarca);
+                }
+                dgridMarca.ItemsSource = listaProductosCompra;
+                dgridMarca.AutoGenerateColumns = true;
+                dgridLista.Columns[0].Visibility = System.Windows.Visibility.Hidden;
+
             }
             catch (Exception ex)
             {
-                MessageBoxResult error = MessageBox.Show("ERROR: " + ex.Message);
+                MessageBoxResult mensajeError = MessageBox.Show("ERROR: " + ex.Message);
             }
-            
         }
-
-        private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
-        {
-        //     fer gridView amb ProductoListaCompra de sortida
-        //     mirar com s'afegeixen nous camps a un gridView
-            
-            //ProductoListaCompra productoListaCompra = new ProductoListaCompra();
-            //var productoSeleccionado = dgridProductos.SelectedItem;
-
-            //string nombreProducto = (productoSeleccionado as mercasmartBusiness.Entities.Producto).nombre;
-            //productoListaCompra.Nombre = nombreProducto;
-            //productoListaCompra.Cantidad = 1;
-            ////lViewListaProductos.
-            
-
-            //if (lViewListaProductos.Items.Contains(productoListaCompra))
-            //{
-            //    listaProductosCompra.Where(prod => prod.Nombre.Equals(nombreProducto)).First().Cantidad += 1;
-            //}
-            //else
-            //{
-            //    lViewListaProductos.Items.Add(productoListaCompra);                
-            //}         
-
-        }
-        
     }
 }
+
+        
+    
