@@ -10,14 +10,19 @@ namespace mercasmartBusiness.Mapping.Entities
     {
         internal static void mapModelToEntity(Producto model, out mercasmartBusiness.Entities.Producto entity)
         {
-            mercasmartBusiness.Entities.Marca marca;
             
             entity = new mercasmartBusiness.Entities.Producto();
+
+            mercasmartBusiness.Entities.Marca marca;
             Mapping.Entities.MarcasMap.mapModelToEntity(model.Marca, out marca);
+            entity.Marca = marca;
+
+            mercasmartBusiness.Entities.TiposProducto tipoProducto;
+            Mapping.Entities.TiposProductoMap.mapModelToEntity(model.TipoProducto, out tipoProducto);
+            entity.TipoProducto = tipoProducto;
 
             entity.IdProducto = model.IdProducto;
             entity.Nombre = model.Nombre;
-            entity.Marca = marca;
         }
         internal static void mapModelToEntity(List<Producto> models, out List<mercasmartBusiness.Entities.Producto> entities)
         {
