@@ -9,5 +9,12 @@ namespace mercasmartBusiness.Entities
     {
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
+
+        public TiposProducto(string codigo)
+        {
+            this.Codigo = codigo;
+            this.Descripcion = this.Codigo;
+        }
+
     }
 }
