@@ -11,8 +11,7 @@ namespace mercasmartBusiness.Mapping.Entities
 
         internal static void mapModelToEntity(mercasmartPersistence.Models.TiposProducto model, out mercasmartBusiness.Entities.TiposProducto entity)
         {
-            entity = new mercasmartBusiness.Entities.TiposProducto();
-            entity.Codigo = model.Codigo;
+            entity = new mercasmartBusiness.Entities.TiposProducto(model.Codigo);
             entity.Descripcion = model.Descripcion;
         }
         internal static void mapModelToEntity(List<mercasmartPersistence.Models.TiposProducto> models, out List<mercasmartBusiness.Entities.TiposProducto> entities)
@@ -20,7 +19,7 @@ namespace mercasmartBusiness.Mapping.Entities
             var entitiesCopy = new List<mercasmartBusiness.Entities.TiposProducto>();
             models.ForEach(model =>
             {
-                var entity = new mercasmartBusiness.Entities.TiposProducto();
+                mercasmartBusiness.Entities.TiposProducto entity;
                 mapModelToEntity(model, out entity);
                 entitiesCopy.Add(entity);
             });

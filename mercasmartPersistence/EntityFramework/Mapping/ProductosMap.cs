@@ -11,13 +11,17 @@ namespace mercasmartPersistence.EntityFramework.Mapping
         internal static void mapEntityFrameworkToModel(Productos efModel, out Models.Producto model)
         {
             model = new Models.Producto();
-            mercasmartPersistence.Models.Marca marca;
 
+            mercasmartPersistence.Models.Marca marca;
             Mapping.MarcasMap.mapEntityFrameworkToModel(efModel.Marcas, out marca);
+            model.Marca = marca;
+
+            mercasmartPersistence.Models.TiposProducto tipoProducto;
+            Mapping.TiposProductoMap.mapEntityFrameworkToModel(efModel.TiposProducto, out tipoProducto);
+            model.TipoProducto = tipoProducto;
 
             model.IdProducto = efModel.idProducto;
             model.Nombre = efModel.nombre;
-            model.Marca = marca;
         }
         internal static void mapEntityFrameworkToModel(List<Productos> efModels, out List<Models.Producto> models)
         {
