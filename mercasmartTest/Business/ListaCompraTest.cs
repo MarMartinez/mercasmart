@@ -18,12 +18,12 @@ namespace mercasmartTest.Business
             var listaCompra = new mercasmartBusiness.Entities.ListaCompra();
 
             // Insertamos diferentes productos en la lista
-            listaCompra.ProductosListaCompra.Add(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("aceite"), 1));
-            listaCompra.ProductosListaCompra.Add(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("arroz"), 1));
-            listaCompra.ProductosListaCompra.Add(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("cafe"), 1));
-            listaCompra.ProductosListaCompra.Add(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("champu"), 1));
-            listaCompra.ProductosListaCompra.Add(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("leche"), 1));
-            listaCompra.ProductosListaCompra.Add(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("pasta"), 1));
+            listaCompra.addProductoListaCompra(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("aceite"), 1));
+            listaCompra.addProductoListaCompra(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("arroz"), 1));
+            listaCompra.addProductoListaCompra(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("cafe"), 1));
+            listaCompra.addProductoListaCompra(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("champu"), 1));
+            listaCompra.addProductoListaCompra(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("leche"), 1));
+            listaCompra.addProductoListaCompra(new mercasmartBusiness.ViewModels.ProductoListaCompra(new TiposProducto("pasta"), 1));
 
             var resultado = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
 
