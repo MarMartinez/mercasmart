@@ -70,17 +70,7 @@ namespace mercasmartWPF
                 string codigoTipoProducto = tipoProductoSeleccionado.Codigo;
                 List<Producto> listaProductosConMarca = new List<Producto>();
                 listaProductosConMarca = producto.getProductosPorTipo(codigoTipoProducto);
-                foreach (var prod in listaProductosCompra)
-                {
-                    productoPorMarca.Producto = prod.Producto;
-                    productoPorMarca.DescripcionProducto = prod.TipoProducto.Codigo;
-                    productoPorMarca.NombreMarca = prod.Producto.Marca.Nombre;
-                    listaProductosPorTipoYMarca.Add(productoPorMarca);
-                }
-                dgridMarca.ItemsSource = listaProductosCompra;
-                dgridMarca.AutoGenerateColumns = true;
-                dgridLista.Columns[0].Visibility = System.Windows.Visibility.Hidden;
-
+                dgridMarca.ItemsSource = listaProductosConMarca;
             }
             catch (Exception ex)
             {

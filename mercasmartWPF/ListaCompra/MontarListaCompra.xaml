@@ -5,7 +5,12 @@
     <Grid>
         <Button Content="Calcular precio por establecimiento" Height="40" HorizontalAlignment="Left" Margin="245,477,0,0" Name="btnCalcular" VerticalAlignment="Top" Width="267" FontSize="16" Background="#AAF21313" BorderBrush="#FFB10000" Foreground="#FFB10000" />
         <DataGrid AutoGenerateColumns="False" Height="209" HorizontalAlignment="Left" Margin="26,42,0,0" Name="dgridProducto" VerticalAlignment="Top" Width="255" SelectionChanged="dgridProducto_SelectionChanged"/>
-        <DataGrid AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left" Margin="26,298,0,0" Name="dgridMarca" VerticalAlignment="Top" Width="255" />
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left" Margin="26,298,0,0" Name="dgridMarca" VerticalAlignment="Top" Width="255">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
+                <DataGridTextColumn Header="Marca" Binding="{Binding Marca.Nombre}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <DataGrid AutoGenerateColumns="False" Height="406" HorizontalAlignment="Left" Margin="378,42,0,0" Name="dgridLista" VerticalAlignment="Top" Width="368" />
         <Label Content="Productos:" Height="37" HorizontalAlignment="Left" Margin="26,9,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" Width="164" />
         <Label Content="Lista de la compra:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="378,9,0,0" Name="label2" VerticalAlignment="Top" Width="164" />
