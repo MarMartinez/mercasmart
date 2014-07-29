@@ -15,6 +15,7 @@ namespace mercasmartBusiness.ViewModels
         public ProductoListaCompra(Producto producto, int cantidad)
         {
             this.Producto = producto;
+            this.TipoProducto = this.Producto.TipoProducto;
             this.Cantidad = cantidad;
         }
         public ProductoListaCompra(TiposProducto tipoProducto, int cantidad)
