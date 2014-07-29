@@ -10,11 +10,9 @@ namespace mercasmartBusiness.Entities
     public class ListaCompra
     {
 
-        public List<ProductoListaCompra> ProductosListaCompra { get; set; }
-
         public ListaCompra()
         {
-            ProductosListaCompra = new List<ProductoListaCompra>();
+            _productosListaCompra = new List<ProductoListaCompra>();
         }
 
         public List<PrecioEstablecimientoListaCompra> getCalculoPreciosEstablecimientoListaCompra()
@@ -55,6 +53,12 @@ namespace mercasmartBusiness.Entities
             });
 
             return preciosEstablecimientoListaCompra;
+        }
+
+        private List<ProductoListaCompra> _productosListaCompra { get; set; }
+        public void addProductoListaCompra(ProductoListaCompra productoListaCompra)
+        {
+            _productosListaCompra.Add(productoListaCompra);
         }
 
         private ProductoEstablecimientoPrecio getProductoByEstablecimientoIdProducto(string codigoEstablecimiento, int idProducto)
