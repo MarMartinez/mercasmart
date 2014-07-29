@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ListaCompraSupermercado" Height="611" Width="798" Loaded="ListaCompraSupermercado_Loaded" IsManipulationEnabled="True">
     <Grid>
-        <Button Content="Calcular precio por establecimiento" Height="40" HorizontalAlignment="Left" Margin="245,477,0,0" Name="btnCalcular" VerticalAlignment="Top" Width="267" FontSize="16" Background="#AAF21313" BorderBrush="#FFB10000" Foreground="#FFB10000" />
+        <Button Content="Calcular precio por establecimiento" Height="40" HorizontalAlignment="Left" Margin="245,477,0,0" Name="btnCalcular" VerticalAlignment="Top" Width="267" FontSize="16" Background="#AAF21313" BorderBrush="#FFB10000" Foreground="#FFB10000" Click="btnCalcular_Click" />
         <DataGrid AutoGenerateColumns="False" Height="209" HorizontalAlignment="Left" Margin="26,42,0,0" Name="dgridProducto" VerticalAlignment="Top" Width="255" SelectionChanged="dgridProducto_SelectionChanged"/>
         <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left" Margin="26,298,0,0" Name="dgridMarca" VerticalAlignment="Top" Width="255">
             <DataGrid.Columns>

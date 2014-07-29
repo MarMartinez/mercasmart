@@ -14,6 +14,7 @@ using mercasmartBusiness;
 using System.Collections;
 using mercasmartBusiness.ViewModels;
 using mercasmartBusiness.Entities;
+using mercasmartWPF.ListaCompra;
 
 namespace mercasmartWPF
 {
@@ -80,6 +81,21 @@ namespace mercasmartWPF
             Producto marcaProductoSeleccionado = (Producto)dgridMarca.SelectedItem;
             ProductoListaCompra productoLista = new ProductoListaCompra(marcaProductoSeleccionado, 1);
             dgridLista.Items.Add(productoLista);
+        }
+
+        private void btnCalcular_Click(object sender, RoutedEventArgs e)
+        {
+            mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
+            foreach (var item in dgridLista.Items)
+            {
+                listaCompra.addProductoListaCompra((ProductoListaCompra)item);
+            }
+            //var x = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+
+            //Cambiar ventana
+            
+            PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(listaCompra);
+            establecimientos.Show();
         }
     }
 }

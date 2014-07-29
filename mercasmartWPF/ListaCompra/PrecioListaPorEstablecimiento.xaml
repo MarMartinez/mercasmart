@@ -3,26 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PrecioListaPorEstablecimiento" Height="270" Width="718">
     <Grid>
-        <ListView HorizontalAlignment="Left" Name="listProductosSeleccionadas" VerticalAlignment="Top" Width="696" Height="137">
-            <ListView.View>
-
-                <GridView AllowsColumnReorder="true"
-              ColumnHeaderToolTip="Productos Seleccionados por el usuario">
-
-                    <GridViewColumn DisplayMemberBinding=
-                          "{Binding Path=tipoProducto}" 
-                      Header="Establecimiento" />
-
-                    <GridViewColumn DisplayMemberBinding=
-                          "{Binding Path=nombreProducto}" 
-                      Header="Precio" />
-
-                    <GridViewColumn DisplayMemberBinding=
-                          "{Binding Path=marcaProducto}" 
-                      Header="Productos no disponibles" />
-                </GridView>
-
-            </ListView.View>
-        </ListView>
+        <DataGrid AutoGenerateColumns="False" Height="200" HorizontalAlignment="Left" Margin="12,12,0,0" Name="dgridListadoPrecios" VerticalAlignment="Top" Width="672">
+            
+        </DataGrid>
     </Grid>
 </Window>

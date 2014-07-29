@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using mercasmartBusiness.Entities;
 
 namespace mercasmartWPF.ListaCompra
 {
@@ -21,6 +22,14 @@ namespace mercasmartWPF.ListaCompra
         public PrecioListaPorEstablecimiento()
         {
             InitializeComponent();
+        }
+
+        public PrecioListaPorEstablecimiento(mercasmartBusiness.Entities.ListaCompra listaCompra)
+        {
+            // barra d'estat carregant per fils cada establiment.
+            InitializeComponent();
+            dgridListadoPrecios.ItemsSource = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+            dgridListadoPrecios.AutoGenerateColumns = true;
         }
 
         //s'ha de poder modificar la llista!!
