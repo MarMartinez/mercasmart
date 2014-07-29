@@ -27,15 +27,7 @@ namespace mercasmartWPF
         public mercasmartBusiness.Services.MarcasServices marca;
         public mercasmartBusiness.Services.TiposProductoService tiposProducto;
         List<ProductoListaCompra> listaProductosCompra = new List<ProductoListaCompra>();
-
-        private class productoListadoMarca
-        {
-            internal Producto Producto { get; set; }
-            internal string DescripcionProducto { get; set; }
-            internal string NombreMarca { get; set; }
-        }
-        List<productoListadoMarca> listaProductosPorTipoYMarca;
-
+       
         public MontarListaCompra()
         {
             InitializeComponent();
@@ -63,9 +55,7 @@ namespace mercasmartWPF
             try
             {
                 producto = new mercasmartBusiness.Services.ProductoService();
-                productoListadoMarca productoPorMarca = new productoListadoMarca();
-                listaProductosPorTipoYMarca = new List<productoListadoMarca>();
-
+                
                 TiposProducto tipoProductoSeleccionado = (TiposProducto)(sender as DataGrid).SelectedItem;
                 string codigoTipoProducto = tipoProductoSeleccionado.Codigo;
                 List<Producto> listaProductosConMarca = new List<Producto>();
@@ -76,6 +66,20 @@ namespace mercasmartWPF
             {
                 MessageBoxResult mensajeError = MessageBox.Show("ERROR: " + ex.Message);
             }
+        }
+
+        private void btnAñadirProducto_Click(object sender, RoutedEventArgs e)
+        {
+            TiposProducto tipoProductoSeleccionado = (TiposProducto)dgridProducto.SelectedItem;
+            ProductoListaCompra productoLista = new ProductoListaCompra(tipoProductoSeleccionado, 1);            
+            dgridLista.Items.Add(productoLista);
+        }
+
+        private void btnAñadirMarca_Click(object sender, RoutedEventArgs e)
+        {
+            Producto marcaProductoSeleccionado = (Producto)dgridMarca.SelectedItem;
+            ProductoListaCompra productoLista = new ProductoListaCompra(marcaProductoSeleccionado, 1);
+            dgridLista.Items.Add(productoLista);
         }
     }
 }

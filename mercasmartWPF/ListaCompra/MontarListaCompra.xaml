@@ -11,13 +11,20 @@
                 <DataGridTextColumn Header="Marca" Binding="{Binding Marca.Nombre}" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid AutoGenerateColumns="False" Height="406" HorizontalAlignment="Left" Margin="378,42,0,0" Name="dgridLista" VerticalAlignment="Top" Width="368" />
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="406" HorizontalAlignment="Left" Margin="378,42,0,0" Name="dgridLista" VerticalAlignment="Top" Width="368">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto.Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tipo Producto" Binding="{Binding TipoProducto.Descripcion}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Marca" Binding="{Binding Producto.Marca.Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Label Content="Productos:" Height="37" HorizontalAlignment="Left" Margin="26,9,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" Width="164" />
         <Label Content="Lista de la compra:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="378,9,0,0" Name="label2" VerticalAlignment="Top" Width="164" />
         <Label Content="Marcas:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="26,262,0,0" Name="label3" VerticalAlignment="Top" Width="164" />
-        <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,94,0,0" Name="btnAñadirProducto" VerticalAlignment="Top" Width="46" />
+        <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,94,0,0" Name="btnAñadirProducto" VerticalAlignment="Top" Width="46" Click="btnAñadirProducto_Click" />
         <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,368" Name="btnEliminarProducto" VerticalAlignment="Bottom" Width="46" />
-        <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,322,0,0" Name="btnAñadirMarca" VerticalAlignment="Top" Width="46" />
+        <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,322,0,0" Name="btnAñadirMarca" VerticalAlignment="Top" Width="46" Click="btnAñadirMarca_Click" />
         <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,140" Name="btnEliminarMarca" VerticalAlignment="Bottom" Width="46" />
     </Grid>
 </Window>
