@@ -23,8 +23,8 @@
         <Label Content="Lista de la compra:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="378,9,0,0" Name="label2" VerticalAlignment="Top" Width="164" />
         <Label Content="Marcas:" FontSize="16" Height="37" HorizontalAlignment="Left" Margin="26,262,0,0" Name="label3" VerticalAlignment="Top" Width="164" />
         <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,94,0,0" Name="btnAñadirProducto" VerticalAlignment="Top" Width="46" Click="btnAñadirProducto_Click" />
-        <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,368" Name="btnEliminarProducto" VerticalAlignment="Bottom" Width="46" />
+        <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,368" Name="btnEliminarProducto" VerticalAlignment="Bottom" Width="46" Click="btnEliminarProducto_Click" />
         <Button Content="&gt;&gt;" Height="46" HorizontalAlignment="Left" Margin="308,322,0,0" Name="btnAñadirMarca" VerticalAlignment="Top" Width="46" Click="btnAñadirMarca_Click" />
-        <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,140" Name="btnEliminarMarca" VerticalAlignment="Bottom" Width="46" />
+        <Button Content="&lt;&lt;" Height="46" HorizontalAlignment="Left" Margin="308,0,0,140" Name="btnEliminarMarca" VerticalAlignment="Bottom" Width="46" Click="btnEliminarMarca_Click" />
     </Grid>
 </Window>

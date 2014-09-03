@@ -83,20 +83,32 @@ namespace mercasmartWPF
             dgridLista.Items.Add(productoLista);
         }
 
+        private void btnEliminarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            ProductoListaCompra productoAEliminar = (ProductoListaCompra)dgridLista.SelectedItem;
+            dgridLista.Items.Remove(productoAEliminar);
+        }
+
+        private void btnEliminarMarca_Click(object sender, RoutedEventArgs e)
+        {
+            ProductoListaCompra productoAEliminar = (ProductoListaCompra)dgridLista.SelectedItem;
+            dgridLista.Items.Remove(productoAEliminar);
+        }
+
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
             mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
+
             foreach (var item in dgridLista.Items)
             {
                 listaCompra.addProductoListaCompra((ProductoListaCompra)item);
             }
-            //var x = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
 
-            //Cambiar ventana
-            
-            PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(listaCompra);
+            List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+
+            PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
             establecimientos.Show();
-        }
+        }       
     }
 }
 

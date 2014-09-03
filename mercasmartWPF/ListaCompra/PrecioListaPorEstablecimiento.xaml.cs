@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using mercasmartBusiness.Entities;
+using mercasmartBusiness.ViewModels;
 
 namespace mercasmartWPF.ListaCompra
 {
@@ -19,17 +20,60 @@ namespace mercasmartWPF.ListaCompra
     /// </summary>
     public partial class PrecioListaPorEstablecimiento : Window
     {
+        private List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra;
+
+        public class ElementosAMostrarPorPantalla
+        {
+            public string nombreEstablecimiento;
+            public int numeroProductos;
+            public double precioTotal;
+            //public List<PrecioProductoListaCompra> listaDisponibles;
+            //public List<ProductoListaCompra> listaNoDisponibles;
+        }
+
+        public List<ElementosAMostrarPorPantalla> listadoProductosDisponibles = new List<ElementosAMostrarPorPantalla>();
+        public List<ElementosAMostrarPorPantalla> listadoProductosNoDisponibles = new List<ElementosAMostrarPorPantalla>();
+        
         public PrecioListaPorEstablecimiento()
         {
             InitializeComponent();
         }
 
-        public PrecioListaPorEstablecimiento(mercasmartBusiness.Entities.ListaCompra listaCompra)
+        public PrecioListaPorEstablecimiento(List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra)
         {
             // barra d'estat carregant per fils cada establiment.
             InitializeComponent();
-            dgridListadoPrecios.ItemsSource = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
-            dgridListadoPrecios.AutoGenerateColumns = true;
+
+            this.calculoPrecioListaCompra = calculoPrecioListaCompra;
+
+            foreach (var prod in calculoPrecioListaCompra)
+            {
+                ElementosAMostrarPorPantalla ItemLista = new ElementosAMostrarPorPantalla();
+
+                if (prod.ProductosDisponibles.Count() > 0)
+                {
+                    ItemLista.nombreEstablecimiento = prod.Establecimiento.Nombre;
+                    ItemLista.numeroProductos = prod.ProductosDisponibles.Count();
+                    ItemLista.precioTotal = prod.Total;
+                    //ItemLista.listaDisponibles = prod.ProductosDisponibles;
+                    listadoProductosDisponibles.Add(ItemLista);
+                }
+                else
+                {
+                    ItemLista.nombreEstablecimiento = prod.Establecimiento.Nombre;
+                    ItemLista.numeroProductos = prod.ProductosListaCompraNoDisponibles.Count();
+                    //ItemLista.listaNoDisponibles = prod.ProductosListaCompraNoDisponibles;
+                    listadoProductosNoDisponibles.Add(ItemLista);
+                }
+            }
+
+            dgridListadoPrecios.ItemsSource = listadoProductosDisponibles;
+            //dgridProductosNoDisponibles.ItemsSource = listadoProductosNoDisponibles;
+        }
+
+        private void MostrarListado(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //s'ha de poder modificar la llista!!

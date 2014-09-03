@@ -1,10 +1,36 @@
 ﻿<Window x:Class="mercasmartWPF.ListaCompra.PrecioListaPorEstablecimiento"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PrecioListaPorEstablecimiento" Height="270" Width="718">
+        Title="PrecioListaPorEstablecimiento" Height="471" Width="718">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" Height="200" HorizontalAlignment="Left" Margin="12,12,0,0" Name="dgridListadoPrecios" VerticalAlignment="Top" Width="672">
-            
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="168" HorizontalAlignment="Left" Margin="15,43,0,0" Name="dgridListadoPrecios" VerticalAlignment="Top" Width="672">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Establecimiento" Width ="150" Binding="{Binding ElementosAMostrarPorPantalla.nombreEstablecimiento}" />
+                <DataGridTextColumn Header="Número Productos" Width ="150" Binding="{Binding ElementosAMostrarPorPantalla.numeroProductos}" />
+                <DataGridTextColumn Header="Precio Total" Width ="150" Binding="{Binding ElementosAMostrarPorPantalla.precioTotal}" />
+                <!--<DataGridTemplateColumn Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="MostrarListado">Lista Productos</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Productos disponibles:" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Productos no disponibles:" Height="28" HorizontalAlignment="Left" Margin="12,248,0,0" Name="label2" VerticalAlignment="Top" />
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="143" HorizontalAlignment="Left" Margin="12,276,0,0" Name="dgridProductosNoDisponibles" VerticalAlignment="Top" Width="672">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Establecimiento" Width ="180" Binding="{Binding nombreEstablecimiento}" />
+                <DataGridTextColumn Header="Número Productos" Width ="180" Binding="{Binding numeroProductos}" />
+                <!--<DataGridTemplateColumn Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="MostrarListado">Lista Productos</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>
