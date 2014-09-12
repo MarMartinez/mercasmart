@@ -24,11 +24,11 @@ namespace mercasmartWPF.ListaCompra
 
         public class ElementosAMostrarPorPantalla
         {
-            public string nombreEstablecimiento;
-            public int numeroProductos;
-            public double precioTotal;
-            //public List<PrecioProductoListaCompra> listaDisponibles;
-            //public List<ProductoListaCompra> listaNoDisponibles;
+            public string nombreEstablecimiento { get; set; }
+            public int numeroProductos { get; set; }
+            public double precioTotal { get; set; }
+            public List<PrecioProductoListaCompra> listaDisponibles { get; set; }
+            public List<ProductoListaCompra> listaNoDisponibles { get; set; }
         }
 
         public List<ElementosAMostrarPorPantalla> listadoProductosDisponibles = new List<ElementosAMostrarPorPantalla>();
@@ -55,24 +55,39 @@ namespace mercasmartWPF.ListaCompra
                     ItemLista.nombreEstablecimiento = prod.Establecimiento.Nombre;
                     ItemLista.numeroProductos = prod.ProductosDisponibles.Count();
                     ItemLista.precioTotal = prod.Total;
-                    //ItemLista.listaDisponibles = prod.ProductosDisponibles;
+                    ItemLista.listaDisponibles = prod.ProductosDisponibles;
                     listadoProductosDisponibles.Add(ItemLista);
                 }
-                else
+                if (prod.ProductosListaCompraNoDisponibles.Count() > 0)
                 {
                     ItemLista.nombreEstablecimiento = prod.Establecimiento.Nombre;
                     ItemLista.numeroProductos = prod.ProductosListaCompraNoDisponibles.Count();
-                    //ItemLista.listaNoDisponibles = prod.ProductosListaCompraNoDisponibles;
+                    ItemLista.listaNoDisponibles = prod.ProductosListaCompraNoDisponibles;
                     listadoProductosNoDisponibles.Add(ItemLista);
-                }
+                }                
             }
 
             dgridListadoPrecios.ItemsSource = listadoProductosDisponibles;
-            //dgridProductosNoDisponibles.ItemsSource = listadoProductosNoDisponibles;
+            dgridProductosNoDisponibles.ItemsSource = listadoProductosNoDisponibles;
         }
 
-        private void MostrarListado(object sender, RoutedEventArgs e)
+        public void MostrarListadoDisponible(object sender, RoutedEventArgs e)
         {
+            ElementosAMostrarPorPantalla establecimientoSeleccionado = (ElementosAMostrarPorPantalla)dgridListadoPrecios.SelectedItem;
+            List<PrecioProductoListaCompra> productosDisponibles = establecimientoSeleccionado.listaDisponibles;
+
+            popUp_listaProductosDisponibles vistaProductosEnLista = new popUp_listaProductosDisponibles(productosDisponibles);
+            vistaProductosEnLista.Show();
+
+        }
+
+        public void MostrarListadoNoDisponible(object sender, RoutedEventArgs e)
+        {
+            ElementosAMostrarPorPantalla establecimientoSeleccionado = (ElementosAMostrarPorPantalla)dgridProductosNoDisponibles.SelectedItem;
+            List<ProductoListaCompra> productosNoDisponibles = establecimientoSeleccionado.listaNoDisponibles;
+
+            popUp_listaProductosNoDisponibles vistaProductosEnLista = new popUp_listaProductosNoDisponibles(productosNoDisponibles);
+            vistaProductosEnLista.Show();
 
         }
 

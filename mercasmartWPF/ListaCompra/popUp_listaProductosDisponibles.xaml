@@ -1,0 +1,17 @@
+﻿<Window x:Class="mercasmartWPF.ListaCompra.popUp_listaProductosDisponibles"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="popUp_listaProductos" SizeToContent="WidthAndHeight">
+    <Grid>
+        <DockPanel LastChildFill="True" AllowDrop="True">
+            <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Name="dgridListaProductos" HorizontalAlignment="Center">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Producto" Width="auto" Binding="{Binding Producto.Nombre}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Precio Unidad" Width="auto" Binding="{Binding PrecioUnidad}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Precio Total" Width="auto" Binding="{Binding PrecioTotal}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>        
+    </Grid>
+</Window>
+
