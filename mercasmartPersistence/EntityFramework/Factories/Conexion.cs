@@ -11,7 +11,7 @@ namespace mercasmartPersistence.EntityFramework.Factories
     {
         public mercasmartEntities mercasmartEntities()
         {
-            var connectionString = Environment.GetEnvironmentVariable("SQLSERVER_CONNECTION_STRING");
+            var connectionString = Environment.GetEnvironmentVariable("SQLSERVER_CONNECTION_STRING_LOCAL");
             var bd = new mercasmartEntities(connectionString);
             return bd;
         }
