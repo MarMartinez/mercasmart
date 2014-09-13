@@ -4,7 +4,14 @@
         Title="ListadoProductos" Height="300" Width="723">
     <Grid>
         <Label Content="Introduce un producto:" Height="25" HorizontalAlignment="Left" Margin="86,0,0,0" Name="label1" VerticalAlignment="Top" Width="502" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="86,28,0,0" Name="txtProducto" VerticalAlignment="Top" Width="529" TextChanged="txtProducto_TextChanged" />
-        <DataGrid AutoGenerateColumns="False" Height="179" HorizontalAlignment="Left" Margin="21,60,0,0" Name="dgProductos" VerticalAlignment="Top" Width="656" />
+        <ComboBox Name="cboxSeleccionProducto" SelectionChanged="cboxSeleccionProducto_SelectionChanged" Margin="97,31,70,198"></ComboBox>
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left" Margin="97,0,0,28" Name="dgridProducto" VerticalAlignment="Bottom" Width="534"
+                  HorizontalContentAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="250" />
+                <DataGridTextColumn Header="Marca" Binding="{Binding Marca.Nombre}" Width="120"/>
+                <DataGridTextColumn Header="Precio" Binding="{Binding TiposProducto.Descripcion}" Width="200" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
