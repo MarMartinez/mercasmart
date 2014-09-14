@@ -21,6 +21,7 @@ namespace mercasmartWPF
     /// </summary>
     public partial class ListadoProductos : Window
     {
+        EstablecimientosService establecimientosServ = new EstablecimientosService();
         TiposProductoService tipoProductoServ = new TiposProductoService();
         ProductoService productoServ = new ProductoService();
         List<TiposProducto> selectorProductos = new List<TiposProducto>();
@@ -40,19 +41,25 @@ namespace mercasmartWPF
             string productoSeleccionado = (string)(sender as ComboBox).SelectedItem;
             string tipoProductoSeleccionado = selectorProductos.Where(prod => prod.Descripcion == productoSeleccionado).FirstOrDefault().Codigo;
             listaProductosSegunSeleccion = productoServ.getProductosPorTipo(tipoProductoSeleccionado);
-            dgridProducto.ItemsSource = listaProductosSegunSeleccion.OrderBy(prod => prod.Marca.Nombre);
-
+            
             //Obtener precio producto según establecimiento
 
-            foreach (var item in listaPreciosPorEstablecimiento)
-            {
-                //listaPreciosPorEstablecimiento = entityListaCompra.getPrecioProductoPorEstablecimiento(item.Producto.IdProducto);
-            }
+            List<Establecimiento> listadoEstablecimientos = establecimientosServ.getEstablecimientosAll();
+            ProductoEstablecimientoPrecio precioItemPorEstablecimiento = new ProductoEstablecimientoPrecio();
+            List<ProductoEstablecimientoPrecio> listadoProductosPrecios = new List<ProductoEstablecimientoPrecio>();
             
-
-
-
-            string a = "a";
+            foreach (var establecimiento in listadoEstablecimientos)
+            {
+                foreach (var item in listaProductosSegunSeleccion)
+                {                    
+                    precioItemPorEstablecimiento = entityListaCompra.getProductoByEstablecimientoIdProducto(establecimiento.Codigo, item.IdProducto);
+                    if (precioItemPorEstablecimiento != null)
+                    {
+                        listadoProductosPrecios.Add(precioItemPorEstablecimiento);
+                    }                    
+                }
+            }
+            dgridProducto.ItemsSource = listadoProductosPrecios.OrderBy(prod => prod.Producto.Marca.Nombre);
         }
     }
 }

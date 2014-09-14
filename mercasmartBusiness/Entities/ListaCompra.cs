@@ -61,7 +61,7 @@ namespace mercasmartBusiness.Entities
             _productosListaCompra.Add(productoListaCompra);
         }
 
-        private ProductoEstablecimientoPrecio getProductoByEstablecimientoIdProducto(string codigoEstablecimiento, int idProducto)
+        public ProductoEstablecimientoPrecio getProductoByEstablecimientoIdProducto(string codigoEstablecimiento, int idProducto)
         {
             // Get lista productos establecimiento
             var productosEstablecimiento = getProductosByCodigoEstablecimiento(codigoEstablecimiento);
@@ -103,7 +103,5 @@ namespace mercasmartBusiness.Entities
             return _listaEstablecimientos;
         }
 
-
-    
     }
 }

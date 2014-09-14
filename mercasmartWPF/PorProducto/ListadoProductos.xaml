@@ -3,14 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ListadoProductos" Height="300" Width="723">
     <Grid>
-        <Label Content="Introduce un producto:" Height="25" HorizontalAlignment="Left" Margin="86,0,0,0" Name="label1" VerticalAlignment="Top" Width="502" />
-        <ComboBox Name="cboxSeleccionProducto" SelectionChanged="cboxSeleccionProducto_SelectionChanged" Margin="97,31,70,198"></ComboBox>
-        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left" Margin="97,0,0,28" Name="dgridProducto" VerticalAlignment="Bottom" Width="534"
+        <Label Content="Seleccione un producto:" Height="25" HorizontalAlignment="Left" Margin="86,0,0,0" Name="label1" VerticalAlignment="Top" Width="502" />
+        <ComboBox Name="cboxSeleccionProducto" SelectionChanged="cboxSeleccionProducto_SelectionChanged" Margin="86,26,0,210" HorizontalAlignment="Left" Width="185"></ComboBox>
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="175" HorizontalAlignment="Left" Margin="51,0,0,25" Name="dgridProducto" VerticalAlignment="Bottom" Width="616"
                   HorizontalContentAlignment="Center">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="250" />
-                <DataGridTextColumn Header="Marca" Binding="{Binding Marca.Nombre}" Width="120"/>
-                <DataGridTextColumn Header="Precio" Binding="{Binding TiposProducto.Descripcion}" Width="200" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Producto.Nombre}" Width="250" />
+                <DataGridTextColumn Header="Marca" Binding="{Binding Producto.Marca.Nombre}" Width="120"/>
+                <DataGridTextColumn Header="Establecimiento" Binding="{Binding Establecimiento.Nombre}" Width="150" />
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="100"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
