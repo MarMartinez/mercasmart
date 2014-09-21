@@ -19,6 +19,8 @@ namespace mercasmartBusiness.ViewModels
             set { _total = value; }
         }
 
+        public PrecioEstablecimientoListaCompra() {}
+        
         public PrecioEstablecimientoListaCompra(Establecimiento establecimiento)
         {
             this.Establecimiento = establecimiento;

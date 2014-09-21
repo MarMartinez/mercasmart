@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using mercasmartBusiness.Entities;
+using System.Collections.ObjectModel;
 
 namespace mercasmartBusiness.ViewModels
 {
-    public class ProductoListaCompra
+    public class ProductoListaCompra : ObservableCollection<ProductoListaCompra>
     {
         public Producto Producto { get; set; }
         public TiposProducto TipoProducto { get; set; }
@@ -19,7 +20,7 @@ namespace mercasmartBusiness.ViewModels
             this.Cantidad = cantidad;
         }
         public ProductoListaCompra(TiposProducto tipoProducto, int cantidad)
-        {
+        {            
             this.TipoProducto = tipoProducto;
             this.Cantidad = cantidad;
         }

@@ -15,6 +15,7 @@ using System.Collections;
 using mercasmartBusiness.ViewModels;
 using mercasmartBusiness.Entities;
 using mercasmartWPF.ListaCompra;
+using System.Collections.ObjectModel;
 
 namespace mercasmartWPF
 {
@@ -28,11 +29,29 @@ namespace mercasmartWPF
         public mercasmartBusiness.Services.MarcasServices marca;
         public mercasmartBusiness.Services.TiposProductoService tiposProducto;
         List<ProductoListaCompra> listaProductosCompra = new List<ProductoListaCompra>();
+        private ObservableCollection<ProductoListaCompra> _obsProdListaCompra = new ObservableCollection<ProductoListaCompra>();
+        
+        public ObservableCollection<ProductoListaCompra> ObsProdListaCompra
+        {
+            get
+            {
+                if (_obsProdListaCompra == null)
+                    _obsProdListaCompra = new ObservableCollection<ProductoListaCompra>();
+                return _obsProdListaCompra;
+            }
+        }
+        
+        public class CantidadProductosSeleccionados
+        {
+            public int CantidadSeleccionada { get; set; }
+        }
+
+        List<CantidadProductosSeleccionados> numProductosSeleccionados = new List<CantidadProductosSeleccionados>();
        
         public MontarListaCompra()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();            
+        }        
 
         private void ListaCompraSupermercado_Loaded(object sender, RoutedEventArgs e)
         {
@@ -44,6 +63,11 @@ namespace mercasmartWPF
                 //dgridProducto.Columns[1].MinWidth = dgridProducto.Width;
                 dgridProducto.ItemsSource = listaTiposProducto;
                 dgridProducto.Columns[0].Visibility = System.Windows.Visibility.Hidden;
+                dgridProducto.Columns[1].Width = dgridProducto.Width;
+                dgridProducto.Columns[1].Header = "Selecciona tipo de producto:";
+
+                dgridLista.ItemsSource = new ObservableCollection<ProductoListaCompra>();
+
             }
             catch (Exception ex)
             {
@@ -72,15 +96,33 @@ namespace mercasmartWPF
         private void btnAñadirProducto_Click(object sender, RoutedEventArgs e)
         {
             TiposProducto tipoProductoSeleccionado = (TiposProducto)dgridProducto.SelectedItem;
-            ProductoListaCompra productoLista = new ProductoListaCompra(tipoProductoSeleccionado, 1);            
-            dgridLista.Items.Add(productoLista);
+            
+            if (tipoProductoSeleccionado == null)
+            {
+                MessageBoxResult alerta = MessageBox.Show("Por favor, seleccione un producto.");
+            }
+            else
+            {                
+                ProductoListaCompra productoLista = new ProductoListaCompra(tipoProductoSeleccionado, 1);
+                _obsProdListaCompra.Add(productoLista);
+                dgridLista.ItemsSource = _obsProdListaCompra;
+                
+            }            
         }
 
         private void btnAñadirMarca_Click(object sender, RoutedEventArgs e)
         {
             Producto marcaProductoSeleccionado = (Producto)dgridMarca.SelectedItem;
-            ProductoListaCompra productoLista = new ProductoListaCompra(marcaProductoSeleccionado, 1);
-            dgridLista.Items.Add(productoLista);
+            if (marcaProductoSeleccionado == null)
+            {
+                MessageBoxResult alerta = MessageBox.Show("Por favor, seleccione una marca.");
+            }
+            else
+            {
+                ProductoListaCompra productoLista = new ProductoListaCompra(marcaProductoSeleccionado, 1);
+                _obsProdListaCompra.Add(productoLista);
+                dgridLista.ItemsSource = _obsProdListaCompra;
+            }            
         }
 
         private void btnEliminarProducto_Click(object sender, RoutedEventArgs e)
@@ -97,18 +139,35 @@ namespace mercasmartWPF
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
-            mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
+            List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = new List<PrecioEstablecimientoListaCompra>();
 
             foreach (var item in dgridLista.Items)
             {
-                listaCompra.addProductoListaCompra((ProductoListaCompra)item);
+                mmpListaCompra listaCompra = new mmpListaCompra();
+                listaCompra.setProductoListaCompra((ProductoListaCompra)item);
+                PrecioEstablecimientoListaCompra calculoPrecioItem = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+                calculoPrecioListaCompra.Add(calculoPrecioItem);
             }
 
-            List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
-
             PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
-            establecimientos.Show();
-        }       
+            establecimientos.Show();           
+            
+            
+            
+            //mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
+
+            //foreach (var item in dgridLista.Items)
+            //{
+            //    listaCompra.addProductoListaCompra((ProductoListaCompra)item);
+            //}
+
+            //List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+
+            //PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
+            //establecimientos.Show();
+        }
+
+        
     }
 }
 
