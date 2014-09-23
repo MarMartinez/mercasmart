@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using mercasmartBusiness.Entities;
 using mercasmartBusiness.ViewModels;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace mercasmartWPF.ListaCompra
 {
@@ -33,19 +35,31 @@ namespace mercasmartWPF.ListaCompra
 
         public List<ElementosAMostrarPorPantalla> listadoProductosDisponibles = new List<ElementosAMostrarPorPantalla>();
         public List<ElementosAMostrarPorPantalla> listadoProductosNoDisponibles = new List<ElementosAMostrarPorPantalla>();
-        
-        public PrecioListaPorEstablecimiento()
-        {
-            InitializeComponent();
-        }
 
+        private Thread updateProductosDisponibles;
+        private Thread updateProductosNoDisponibles;
         public PrecioListaPorEstablecimiento(List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra)
         {
-            // barra d'estat carregant per fils cada establiment.
             InitializeComponent();
+            this.calculoPrecioListaCompra = calculoPrecioListaCompra;        
+        }
 
-            this.calculoPrecioListaCompra = calculoPrecioListaCompra;
+        private void dgridListadoPrecios_Load(object sender, RoutedEventArgs e)
+        {
+            //Hilo para cargar productos disponibles
+            updateProductosDisponibles = new Thread(getProductosDisponibles);
+            updateProductosDisponibles.Start();
+        }
 
+        private void dgridListadoNoDisponibles_Load(object sender, RoutedEventArgs e)
+        {
+            //Hilo para cargar productos no disponibles
+            updateProductosNoDisponibles = new Thread(getProductosNoDisponibles);
+            updateProductosNoDisponibles.Start();
+        }
+        
+        private void getProductosDisponibles()
+        {                     
             foreach (var prod in calculoPrecioListaCompra)
             {
                 ElementosAMostrarPorPantalla ItemLista = new ElementosAMostrarPorPantalla();
@@ -57,19 +71,28 @@ namespace mercasmartWPF.ListaCompra
                     ItemLista.precioTotal = prod.Total;
                     ItemLista.listaDisponibles = prod.ProductosDisponibles;
                     listadoProductosDisponibles.Add(ItemLista);
-                }
+                    Dispatcher.BeginInvoke(new ThreadStart(() => dgridListadoPrecios.ItemsSource = listadoProductosDisponibles));
+                }       
+            }
+        }
+
+        private void getProductosNoDisponibles()
+        {
+            foreach (var prod in calculoPrecioListaCompra)
+            {
+                ElementosAMostrarPorPantalla ItemLista = new ElementosAMostrarPorPantalla();
+
                 if (prod.ProductosListaCompraNoDisponibles.Count() > 0)
                 {
                     ItemLista.nombreEstablecimiento = prod.Establecimiento.Nombre;
                     ItemLista.numeroProductos = prod.ProductosListaCompraNoDisponibles.Count();
                     ItemLista.listaNoDisponibles = prod.ProductosListaCompraNoDisponibles;
                     listadoProductosNoDisponibles.Add(ItemLista);
-                }                
-            }
-
-            dgridListadoPrecios.ItemsSource = listadoProductosDisponibles;
-            dgridProductosNoDisponibles.ItemsSource = listadoProductosNoDisponibles;
-        }
+                    Dispatcher.BeginInvoke(new ThreadStart(() => dgridProductosNoDisponibles.ItemsSource = listadoProductosNoDisponibles));
+                }
+            }     
+                           
+        }       
 
         public void MostrarListadoDisponible(object sender, RoutedEventArgs e)
         {
@@ -89,10 +112,6 @@ namespace mercasmartWPF.ListaCompra
             popUp_listaProductosNoDisponibles vistaProductosEnLista = new popUp_listaProductosNoDisponibles(productosNoDisponibles);
             vistaProductosEnLista.Show();
 
-        }
-
-        //s'ha de poder modificar la llista!!
-        // listView amb preu total per establiment de la llista seleccionada
-        // al seleccionar un establiment, s'hauria de poder ensenyar els preus de cada producto, quin hi ha, quin no hi ha...(quin no hi ha??)
+        }       
     }
 }

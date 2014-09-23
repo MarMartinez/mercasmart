@@ -16,9 +16,9 @@
         </DataGrid>
         <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Height="406" HorizontalAlignment="Left" Margin="562,42,0,0" Name="dgridLista" VerticalAlignment="Top" Width="368">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Tipo Producto" Width="100"  Binding="{Binding TipoProducto.Descripcion}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Producto" Width="100" Binding="{Binding Producto.Nombre}"></DataGridTextColumn>                
-                <DataGridTextColumn Header="Marca" Width="100" Binding="{Binding Producto.Marca.Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Header="Tipo Producto" Width="100"  Binding="{Binding TipoProducto.Descripcion}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Header="Producto" Width="100" Binding="{Binding Producto.Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Header="Marca" Width="100" Binding="{Binding Producto.Marca.Nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Cantidad" Width="80" Binding="{Binding Cantidad,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

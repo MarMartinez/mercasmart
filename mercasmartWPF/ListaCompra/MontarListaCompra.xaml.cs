@@ -139,32 +139,17 @@ namespace mercasmartWPF
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
-            List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = new List<PrecioEstablecimientoListaCompra>();
+            mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
 
             foreach (var item in dgridLista.Items)
             {
-                mmpListaCompra listaCompra = new mmpListaCompra();
-                listaCompra.setProductoListaCompra((ProductoListaCompra)item);
-                PrecioEstablecimientoListaCompra calculoPrecioItem = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
-                calculoPrecioListaCompra.Add(calculoPrecioItem);
+                listaCompra.addProductoListaCompra((ProductoListaCompra)item);
             }
 
+            List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+
             PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
-            establecimientos.Show();           
-            
-            
-            
-            //mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
-
-            //foreach (var item in dgridLista.Items)
-            //{
-            //    listaCompra.addProductoListaCompra((ProductoListaCompra)item);
-            //}
-
-            //List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
-
-            //PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
-            //establecimientos.Show();
+            establecimientos.Show();
         }
 
         
