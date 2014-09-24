@@ -6,9 +6,9 @@
         <DockPanel LastChildFill="True" AllowDrop="True">
             <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" Name="dgridListaProductos" HorizontalAlignment="Center">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Producto" Width="auto" Binding="{Binding Producto.Nombre}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Marca" Width="auto" Binding="{Binding Producto.Marca.Nombre}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Descripción" Width="auto" Binding="{Binding Producto.TipoProducto.Descripcion}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Producto" Width="auto" Binding="{Binding Nombre}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Marca" Width="auto" Binding="{Binding Marca.Nombre}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Descripción" Width="auto" Binding="{Binding TipoProducto.Descripcion}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>        

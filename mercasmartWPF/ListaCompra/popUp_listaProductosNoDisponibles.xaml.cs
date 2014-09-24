@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using mercasmartWPF.ListaCompra;
 using mercasmartBusiness.ViewModels;
+using mercasmartBusiness.Entities;
 
 namespace mercasmartWPF.ListaCompra
 {
@@ -23,7 +24,35 @@ namespace mercasmartWPF.ListaCompra
         public popUp_listaProductosNoDisponibles(List<ProductoListaCompra> productosNoDisponibles)
         {
             InitializeComponent();
-            dgridListaProductos.ItemsSource = productosNoDisponibles;
+            List<Producto> listadoProductosNoDisponibles = new List<Producto>();           
+
+            foreach (ProductoListaCompra item in productosNoDisponibles)
+            {
+                if (item.Producto == null)
+                {
+                    Producto productoGenerico = new Producto();
+                    productoGenerico.Nombre = item.TipoProducto.Descripcion;
+                    productoGenerico.Marca = new Marca();
+                    productoGenerico.Marca.Nombre = "Qualquier marca";
+                    productoGenerico.TipoProducto = new TiposProducto(item.TipoProducto.Codigo);
+                    productoGenerico.TipoProducto.Descripcion = item.TipoProducto.Descripcion;
+
+                    listadoProductosNoDisponibles.Add(productoGenerico);
+                }
+                else
+                {
+                    Producto productoNoDisponible = new Producto();
+
+                    productoNoDisponible.Nombre = item.Producto.Nombre;
+                    productoNoDisponible.Marca = new Marca();
+                    productoNoDisponible.Marca.Nombre = item.Producto.Marca.Nombre;
+                    productoNoDisponible.TipoProducto = new TiposProducto(item.TipoProducto.Codigo);
+                    productoNoDisponible.TipoProducto.Descripcion = item.TipoProducto.Descripcion;
+
+                    listadoProductosNoDisponibles.Add(productoNoDisponible);
+                }
+            }
+            dgridListaProductos.ItemsSource = listadoProductosNoDisponibles;
         }
     }
 }

@@ -128,28 +128,37 @@ namespace mercasmartWPF
         private void btnEliminarProducto_Click(object sender, RoutedEventArgs e)
         {
             ProductoListaCompra productoAEliminar = (ProductoListaCompra)dgridLista.SelectedItem;
-            dgridLista.Items.Remove(productoAEliminar);
+            _obsProdListaCompra.Remove(productoAEliminar);
+            dgridLista.ItemsSource = _obsProdListaCompra;
         }
 
         private void btnEliminarMarca_Click(object sender, RoutedEventArgs e)
         {
             ProductoListaCompra productoAEliminar = (ProductoListaCompra)dgridLista.SelectedItem;
-            dgridLista.Items.Remove(productoAEliminar);
+            _obsProdListaCompra.Remove(productoAEliminar);
+            dgridLista.ItemsSource = _obsProdListaCompra;
         }
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
-            mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
-
-            foreach (var item in dgridLista.Items)
+            if (dgridLista.Items.Count > 0)
             {
-                listaCompra.addProductoListaCompra((ProductoListaCompra)item);
+                mercasmartBusiness.Entities.ListaCompra listaCompra = new mercasmartBusiness.Entities.ListaCompra();
+
+                foreach (var item in dgridLista.Items)
+                {
+                    listaCompra.addProductoListaCompra((ProductoListaCompra)item);
+                }
+
+                List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
+
+                PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
+                establecimientos.Show();
             }
-
-            List<PrecioEstablecimientoListaCompra> calculoPrecioListaCompra = listaCompra.getCalculoPreciosEstablecimientoListaCompra();
-
-            PrecioListaPorEstablecimiento establecimientos = new PrecioListaPorEstablecimiento(calculoPrecioListaCompra);
-            establecimientos.Show();
+            else
+            {
+                MessageBoxResult noHayProductosSeleccionados = MessageBox.Show("Debe seleccionar algun producto");
+            }
         }
 
         
